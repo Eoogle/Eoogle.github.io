@@ -6,15 +6,15 @@
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.0.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/tiger32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/tiger16.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-undefined.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
   <script src="/lib/pace/pace.min.js"></script>
 
 
@@ -207,6 +207,160 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/16/designPattern-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3892820290,3110990494&fm=26&gp=0.jpg">
+      <meta itemprop="name" content="Eoogle">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="欢迎来到Eoogle的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/16/designPattern-1/" class="post-title-link" itemprop="url">学习设计模式-1</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-11-16 15:58:06 / 修改时间：16:13:34" itemprop="dateCreated datePublished" datetime="2019-11-16T15:58:06+08:00">2019-11-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/learn-designPattern/" itemprop="url" rel="index">
+                    <span itemprop="name">learn designPattern</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="实现一个计算器控制台程序，要求输入两个数和运算符号，得到结果。"><a href="#实现一个计算器控制台程序，要求输入两个数和运算符号，得到结果。" class="headerlink" title="实现一个计算器控制台程序，要求输入两个数和运算符号，得到结果。"></a>实现一个计算器控制台程序，要求输入两个数和运算符号，得到结果。</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//最原始的做法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Program</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(string[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Console.Write(<span class="string">"请输入数字A："</span>);</span><br><span class="line">        string A = Console.ReadLine();</span><br><span class="line">        Console.Write(<span class="string">"请选择运算符号(+、-、*、/)："</span>);</span><br><span class="line">        string B = Console.ReadLine();</span><br><span class="line">        Console.Write(<span class="string">"请输入数字B："</span>);</span><br><span class="line">        string C = Console.ReadLine();</span><br><span class="line">        string D = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (B == <span class="string">"+"</span>)</span><br><span class="line">            D = Convert.ToString(Convert.ToDouble(A) + Convert.ToDouble(C));</span><br><span class="line">        <span class="keyword">if</span> (B == <span class="string">"-"</span>)</span><br><span class="line">            D = Convert.ToString(Convert.ToDouble(A) - Convert.ToDouble(C));</span><br><span class="line">        <span class="keyword">if</span> (B == <span class="string">"*"</span>)</span><br><span class="line">            D = Convert.ToString(Convert.ToDouble(A) * Convert.ToDouble(C));</span><br><span class="line">        <span class="keyword">if</span> (O == <span class="string">"/"</span>)</span><br><span class="line">            D = Convert.ToString(Convert.ToDouble(A) / Convert.ToDouble(C));</span><br><span class="line"></span><br><span class="line">        Console.WriteLine(<span class="string">"结果是："</span> + D);</span><br><span class="line">    &#125;     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/11/16/designPattern-1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/16/springboot-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3892820290,3110990494&fm=26&gp=0.jpg">
+      <meta itemprop="name" content="Eoogle">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="欢迎来到Eoogle的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/16/springboot-1/" class="post-title-link" itemprop="url">学习springboot-1</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-11-16 15:00:00 / 修改时间：16:07:54" itemprop="dateCreated datePublished" datetime="2019-11-16T15:00:00+08:00">2019-11-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/learn-springboot/" itemprop="url" rel="index">
+                    <span itemprop="name">learn_springboot</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="三个注解"><a href="#三个注解" class="headerlink" title="三个注解"></a>三个注解</h3><p><code>@Value</code>：写在定义单个变量前，与<code>application.yml</code>中的相应位置相对应。</p><p><code>@Component</code>：表明该类是一个组件，表明后才能使用<code>@Autowired</code>进行自动装配。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/11/16/springboot-1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/15/test-markdown/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -261,89 +415,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/11/15/test-markdown/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/14/%E8%AE%B0%E5%BD%95hexo%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%AD%A5%E9%AA%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3892820290,3110990494&fm=26&gp=0.jpg">
-      <meta itemprop="name" content="Eoogle">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="欢迎来到Eoogle的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/14/%E8%AE%B0%E5%BD%95hexo%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%AD%A5%E9%AA%A4/" class="post-title-link" itemprop="url">记录hexo安装和使用的步骤</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-14 16:56:14" itemprop="dateCreated datePublished" datetime="2019-11-14T16:56:14+08:00">2019-11-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-15 09:32:15" itemprop="dateModified" datetime="2019-11-15T09:32:15+08:00">2019-11-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo%E5%AD%A6%E4%B9%A0%E4%B8%8E%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo学习与使用</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>​        这是正式的第一篇文章，想用来介绍晚上使用hexo框架搭建这个博客的过程。</p><p>​        首先，你的电脑需要有git和nodejs这两个工具，可到各自的官网下载，下载完后在命令行下输入git、node、npm验证</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/11/14/%E8%AE%B0%E5%BD%95hexo%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%AD%A5%E9%AA%A4/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -438,6 +509,89 @@
   
   
 
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/14/%E8%AE%B0%E5%BD%95hexo%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%AD%A5%E9%AA%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3892820290,3110990494&fm=26&gp=0.jpg">
+      <meta itemprop="name" content="Eoogle">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="欢迎来到Eoogle的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/14/%E8%AE%B0%E5%BD%95hexo%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%AD%A5%E9%AA%A4/" class="post-title-link" itemprop="url">记录hexo安装和使用的步骤</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-14 16:56:14" itemprop="dateCreated datePublished" datetime="2019-11-14T16:56:14+08:00">2019-11-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-15 10:48:30" itemprop="dateModified" datetime="2019-11-15T10:48:30+08:00">2019-11-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hexo%E5%AD%A6%E4%B9%A0%E4%B8%8E%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo学习与使用</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>​        这是正式的第一篇文章，想用来介绍晚上使用hexo框架搭建这个博客的过程。</p><p>​        首先，你的电脑需要有git和nodejs这两个工具，可到各自的官网下载，下载完后在命令行下输入git、node、npm验证</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/11/14/%E8%AE%B0%E5%BD%95hexo%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%AD%A5%E9%AA%A4/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
   </div>
 
   
@@ -485,14 +639,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
