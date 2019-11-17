@@ -1,6 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>algorithm-3</title>
+    <url>/2019/11/17/algorithm-3/</url>
+    <content><![CDATA[<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><ul>
+<li>递归函数：用函数自身给出定义的函数</li>
+<li>递归算法：一个算法包含对自身的调用，这种调用可以是直接的，也可以是间接地。</li>
+</ul><a id="more"></a>
+<h4 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h4><h5 id="阶乘函数"><a href="#阶乘函数" class="headerlink" title="阶乘函数"></a>阶乘函数</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static int factorial(int n)&#123;</span><br><span class="line">		if(n==0) return 1;</span><br><span class="line">		else</span><br><span class="line">			return factorial(n-1)*n;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Fibonacci数列"><a href="#Fibonacci数列" class="headerlink" title="Fibonacci数列"></a>Fibonacci数列</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static int fibonacci(int n)&#123;</span><br><span class="line">		if(n==1||n==2) return 1;</span><br><span class="line">		else</span><br><span class="line">			return fibonacci(n-1)+fibonacci(n-2);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="整数划分问题"><a href="#整数划分问题" class="headerlink" title="整数划分问题"></a>整数划分问题</h5><p>将正整数n表示成一系列正整数之和：<strong>n=n1+n2+…+nk</strong>，其中<strong>n1</strong>≥n2≥…≥nk≥1，k≥1。<br>正整数n的这种表示称为正整数n的划分。求正整数n的不同划分个数。<br>例如：正整数6有如下11种不同的划分：<br>6；<br>5+1；<br>4+2，4+1+1；<br>3+3，3+2+1，3+1+1+1；<br>2+2+2，2+2+1+1，2+1+1+1+1；<br>1+1+1+1+1+1。</p>
+<p>一些经典的递归问题（阶乘，斐波那契），问题本身都具有比较明显的递归关系，因而容易用递归函数直接求解。</p>
+<p>在本例中，如果设p(n)为正整数n的划分数，则难以找到递归关系，因此考虑增加一个自变量：将<strong>最大加数n1不大于m的划分个数记作q(n,m)</strong>。可以建立q(n,m)的如下递归关系。（若不理解加粗部分，建议把题目多读几遍）</p>
+<p>(1) q(n,1)=1, n≥1; 当最大加数n1不大于1时，任何正整数n只有一种划分形式， 即n=1+1+…+1(n个1)</p>
+<p>(2) q(n,m)=q(n,n), m ≥ n;<br>最大加数n1实际上不能大于n。因此，q(1,m)=1。</p>
+<p>(3) q(n,n)=1+q(n,n-1);<br>正整数n的划分由n1=n的划分和n1 ≤ n-1的划分组成。</p>
+<p>(4) q(n,m)=q(n,m-1)+q(n-m,m), n＞m＞ 1;<br>正整数n的最大加数n1不大于m的划分，由n1≤ m-1 的划分和n1=m的划分组成。n1=m 的划分就是该划分中必然包含数m，因此其划分的数目与n-m的m划分一致。</p>
+<p>如果设p(n)为正整数n的划分数，则难以找到递归关系，因此考虑增加一个自变量：将最大加数n1不大于m的划分个数记作q(n,m)。可以建立q(n,m)的如下递归关系。（正整数n的划分数p(n)=q(n,n)。 ）</p>
+<h6 id="q-n-m-q-当前需要被划分的数字，划分中的加数的最大取值"><a href="#q-n-m-q-当前需要被划分的数字，划分中的加数的最大取值" class="headerlink" title="q(n,m)=q(当前需要被划分的数字，划分中的加数的最大取值)"></a>q(n,m)=q(当前需要被划分的数字，划分中的加数的最大取值)</h6><p><img src="/imgs/algorithm/integerdiv.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int q(int n, int m)</span><br><span class="line">&#123;</span><br><span class="line">    if((n &lt; 1) || (m &lt; 1)) //无意义情况 </span><br><span class="line">        return 0;</span><br><span class="line">    if((n == 1) || (m == 1))//数字1，划分最大加数为1的划分只会有1种 </span><br><span class="line">        return 1;</span><br><span class="line">    if(n &lt; m)			   //需要划分的数字n，实际情况不会小于其划分最大加数 </span><br><span class="line">        return q(n, n);</span><br><span class="line">    if(n == m)				//正整数n的划分由n1=n的划分和n1 ≤ n-1的划分组成。 </span><br><span class="line">        return q(n, m - 1) + 1;</span><br><span class="line">    return q(n, m - 1) + q(n - m, m);//被划分数为n，最大划分加数为m的划分数目，等于， </span><br><span class="line">	// 被划分数为n最大加数为m-1的划分数目 + 被划分数为（n-m）最大加数为m的划分数目   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int	main()</span><br><span class="line">&#123;</span><br><span class="line">    int	m = 6, n = 6;</span><br><span class="line">    for(int i=1;i&lt;=6;i++)</span><br><span class="line">    &#123;</span><br><span class="line">    	cout &lt;&lt;&quot;  数字为&quot;&lt;&lt;n&lt;&lt;&quot;时，最大划分加数上限为&quot;&lt;&lt;i&lt;&lt;&quot;时的划分情况有&quot;&lt;&lt; q(n, i) &lt;&lt;&quot;种&quot;&lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="递归的优点"><a href="#递归的优点" class="headerlink" title="递归的优点"></a>递归的优点</h4><p>结构清晰，可读性强，而且容易用数学归纳法来证明算法的正确性，为设计算法、调试程序提供了很大的便利。</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>递归算法的运行效率较低，生成的子递归多有重复。</p>
+<h4 id="递归式的解法："><a href="#递归式的解法：" class="headerlink" title="递归式的解法："></a>递归式的解法：</h4><ul>
+<li>代换法（substitution method）：猜测解并用数学归纳法证明。</li>
+<li>递归树方法（recursion-tree method）</li>
+<li>主方法（master method）</li>
+</ul>
+<h5 id="递归树"><a href="#递归树" class="headerlink" title="递归树"></a>递归树</h5><p>学习 <a href="https://blog.csdn.net/every__day/article/details/86554857" target="_blank" rel="noopener">https://blog.csdn.net/every__day/article/details/86554857</a> </p>
+<h5 id="主定理"><a href="#主定理" class="headerlink" title="主定理"></a>主定理</h5><p>学习 <a href="https://blog.csdn.net/jal517486222/article/details/82805401" target="_blank" rel="noopener">https://blog.csdn.net/jal517486222/article/details/82805401</a> </p>
+<ul>
+<li>值得注意的是，这三种情况并没有覆盖所有的<code>f（n）</code>，应用时需要注意是否符合这三种情况。</li>
+</ul>
+<h1 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h1><h4 id="基本策略"><a href="#基本策略" class="headerlink" title="基本策略"></a>基本策略</h4><ul>
+<li>分解（Divide）：将原问题分解为子问题</li>
+<li>解决（Conquer）：求解子问题</li>
+<li>合并（Combine）：组合子问题的解得到原问题的解。</li>
+</ul>
+<h4 id="适用条件"><a href="#适用条件" class="headerlink" title="适用条件"></a>适用条件</h4><ul>
+<li>问题的规模缩小到一定程度就可以容易地解决。</li>
+<li>问题可以分解为若干个规模较小的相同问题，即该问题具有最优子结构性质。</li>
+<li>基于子问题的解可以合并为原问题的解。</li>
+<li>问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子问题。</li>
+</ul>
+<h4 id="平衡"><a href="#平衡" class="headerlink" title="平衡"></a>平衡</h4><ul>
+<li><p>使子问题规模尽量接近的做法，就是平衡。</p>
+</li>
+<li><p>在使用分治法和递归时，要尽量把问题分成规模相等，或至少是规模相近的子问题以提高算法的效率。</p>
+</li>
+</ul>
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><h5 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static void quickSort(int arr[])&#123;</span><br><span class="line">		if(arr ==null||arr.length&lt;=1) return;//数组为空或长度小于一，不用操作</span><br><span class="line">		quickSort(arr,0,arr.length);//注意右端口为数组长度，直接arr[right]会越界</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static void quickSort(int arr[],int left,int right)&#123;</span><br><span class="line">		if (right - left &lt;= 1)    return;//递归的终止条件</span><br><span class="line">		int part = partition(arr,left,right);//得到坑值该在的位置</span><br><span class="line">		quickSort(arr, left, part);//左右分别排序</span><br><span class="line">		quickSort(arr, part+1, right);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">    private static int partition(int[] arr, int low, int high) &#123;</span><br><span class="line">    	int pivot = arr[low];//一开始确定坑值和坑的位置。</span><br><span class="line">    	int left = low;</span><br><span class="line">    	int right=high-1;//解决数组长度越界</span><br><span class="line">    	while(left&lt;right)&#123;</span><br><span class="line">    		while(left&lt;right&amp;&amp;pivot&lt;=arr[right])</span><br><span class="line">    			--right;//从右边开始找，找到第一个比pivot值小的值</span><br><span class="line">    		arr[left]=arr[right];//把这个第一个比pivot值小的值放到左边</span><br><span class="line">    		while(left&lt;right&amp;&amp;pivot&gt;=arr[left])</span><br><span class="line">    			++left;//从左边开始找，找到第一个比pivot值大的值</span><br><span class="line">    		arr[right]=arr[left];//把这个第一个比pivot值大的值放到右边</span><br><span class="line">    	&#125;</span><br><span class="line">    	arr[left]=pivot;//把开始的坑值填到后面的坑，这里left=right，都可以</span><br><span class="line">    	print(arr);</span><br><span class="line">		return left;//返回坑所在的位置</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>learn_algorithm</category>
+      </categories>
+      <tags>
+        <tag>递归与分治</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>algorithm-2</title>
+    <url>/2019/11/17/algorithm-2/</url>
+    <content><![CDATA[<h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static int[] insertSort(int[] a) &#123;</span><br><span class="line">	int j, t;</span><br><span class="line">	for (int i = 1; i &lt; a.length; i++) &#123;</span><br><span class="line">		for (j = 0; j &lt; i; j++) &#123;</span><br><span class="line">			if (a[j] &gt; a[i])</span><br><span class="line">				break;//找到第一个前面的大于后面的</span><br><span class="line">		&#125;</span><br><span class="line">		t = a[i];//保存后面的</span><br><span class="line">		for (int k = i - 1; k &gt;= j; k--) &#123;</span><br><span class="line">			a[k + 1] = a[k];//全部后移一位</span><br><span class="line">		&#125;</span><br><span class="line">		a[j] = t;//把后面的值放到前面    2 4 5 0-&gt; 2 4 5 后移一位保存t=0，把第一个位置等于t-&gt;0 2 4 5</span><br><span class="line">	&#125;</span><br><span class="line">	return a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><a id="more"></a>
+
+<ul>
+<li>最好情况运行时间：输入数组已经排好序</li>
+<li>最好情况运行时间：问题要求最终按照递增的顺序排序但输入数组是递减排序。</li>
+</ul>
+<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p>分而治之(divide - conquer);每个递归过程涉及三个步骤<br>第一, 分解: 把待排序的 n 个元素的序列分解成两个子序列, 每个子序列包括 n/2 个元素.<br>第二, 治理: 对每个子序列分别调用归并排序MergeSort, 进行递归操作<br>第三, 合并: 合并两个排好序的子序列,生成排序结果. </p>
+<p><img src="/imgs/algorithm/merge.jpg" alt></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static int[] sort(int[] a,int low,int high)&#123;</span><br><span class="line">        int mid = (low+high)/2;</span><br><span class="line">        if(low&lt;high)&#123;</span><br><span class="line">            sort(a,low,mid);</span><br><span class="line">            sort(a,mid+1,high);</span><br><span class="line">            //左右归并</span><br><span class="line">            merge(a,low,mid,high);</span><br><span class="line">        &#125;</span><br><span class="line">        return a;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    public static void merge(int[] a, int low, int mid, int high) &#123;</span><br><span class="line">        int[] temp = new int[high-low+1];</span><br><span class="line">        int i= low;</span><br><span class="line">        int j = mid+1;</span><br><span class="line">        int k=0;</span><br><span class="line">        // 把较小的数先移到新数组中</span><br><span class="line">        while(i&lt;=mid &amp;&amp; j&lt;=high)&#123;</span><br><span class="line">            if(a[i]&lt;a[j])&#123;</span><br><span class="line">                temp[k++] = a[i++];</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                temp[k++] = a[j++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        // 把左边剩余的数移入数组 </span><br><span class="line">        while(i&lt;=mid)&#123;</span><br><span class="line">            temp[k++] = a[i++];</span><br><span class="line">        &#125;</span><br><span class="line">        // 把右边边剩余的数移入数组</span><br><span class="line">        while(j&lt;=high)&#123;</span><br><span class="line">            temp[k++] = a[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        // 把新数组中的数覆盖nums数组</span><br><span class="line">        for(int x=0;x&lt;temp.length;x++)&#123;</span><br><span class="line">            a[x+low] = temp[x];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><p><strong>（1）稳定性</strong><br>   　归并排序是一种稳定的排序。<br><strong>（2）存储结构要求</strong><br>  　可用顺序存储结构。也易于在链表上实现。<br><strong>（3）时间复杂度</strong><br>  　对长度为n的文件，需进行趟二路归并，每趟归并的时间为O(n)，故其时间复杂度无论是在最好情况下还是在最坏情况下均是O(nlgn)。<br><strong>（4）空间复杂度</strong><br>   需要一个辅助向量来暂存两有序子文件归并的结果，故其辅助空间复杂度为O(n)，显然它不是就地排序。<br> 注意：<br>  　若用单链表做存储结构，很容易给出就地的归并排序</p>
+]]></content>
+      <categories>
+        <category>learn_algorithm</category>
+      </categories>
+      <tags>
+        <tag>InsertSort</tag>
+        <tag>MergeSort</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>algorithm-1</title>
+    <url>/2019/11/17/algorithm-1/</url>
+    <content><![CDATA[<h1 id="算法的基本概念"><a href="#算法的基本概念" class="headerlink" title="算法的基本概念"></a>算法的基本概念</h1><h2 id="算法的定义"><a href="#算法的定义" class="headerlink" title="算法的定义"></a>算法的定义</h2><p>通俗地讲，算法是指解决问题的一种方法或一个过程。更严格地讲，算法是由若干条指令组成的有穷序列，且满足下述四条性质。</p><a id="more"></a>
+<ol>
+<li>输入：有零个或多个由外部提供的量作为算法的输入。</li>
+<li>输出：算法产生至少一个量作为输出。</li>
+<li>确定性：组成算法的每条指令是清晰的，无歧义的。</li>
+<li>有限性：算法中每条指令的执行次数是有限的，执行每条指令的时间也是有限的。</li>
+</ol>
+<p>有的定义是这样的</p>
+<ol>
+<li>确定性：每条指令都是明确的、无二义的。</li>
+<li>能行性：每条指令都必须是能够执行的。</li>
+<li>输入：允许有0个或多个输入量，曲子特定的集合。</li>
+<li>输出：产生一个或多个输出，它们与输入量之间存在着某种特定的关系。</li>
+<li>有穷性：每条指令执行的次数都是有穷的。</li>
+</ol>
+<h3 id="算法定义上的解释"><a href="#算法定义上的解释" class="headerlink" title="算法定义上的解释"></a>算法定义上的解释</h3><ul>
+<li>有穷指令序列若满足上述五条，即确定性、能行性、输入、输出和有穷性，则通常称之为算法。</li>
+<li>若满足前四条而不满足第五条（有穷性）的有穷指令序列通常称之为计算过程。</li>
+<li>只要不停电、机器不坏，计算过程就可以永远执行下去（死循环）。</li>
+<li>永远执行的计算过程并非毫无用处——OS就是计算过程。</li>
+</ul>
+<h2 id="算法的“好坏”如何衡量"><a href="#算法的“好坏”如何衡量" class="headerlink" title="算法的“好坏”如何衡量"></a>算法的“好坏”如何衡量</h2><p>算法复杂性的高低体现在运行该算法所需要的计算机资源上，所需资源越多，该算法的复杂性越高；反之，所需资源越少，该算法的复杂性越低。对计算机资源，最重要的是时间和空间（即存储器）资源。因此，算法的复杂性有时间复杂度和空间复杂度之分。</p>
+<h2 id="描述算法时间复杂度"><a href="#描述算法时间复杂度" class="headerlink" title="描述算法时间复杂度"></a>描述算法时间复杂度</h2><ul>
+<li><p>用问题规模的某个函数来表示算法的基本运算量，这个表示基本运算量的函数称之为算法的时间复杂度。</p>
+</li>
+<li><p>时间复杂度用<code>T(n)</code>（或<code>T(n,m)</code>）表示</p>
+<p>​    <code>T(n)=5n</code></p>
+<p>​    <code>T(n)=3nlogn</code></p>
+<p>   <code>T(n)=2^n</code></p>
+</li>
+</ul>
+<h3 id="表示渐进表示算法复杂度的符号：O、Ω、θ。"><a href="#表示渐进表示算法复杂度的符号：O、Ω、θ。" class="headerlink" title="表示渐进表示算法复杂度的符号：O、Ω、θ。"></a>表示渐进表示算法复杂度的符号：<code>O</code>、<code>Ω</code>、<code>θ</code>。</h3><p><code>O</code>表示上界，可以理解为<code>≤</code>，<code>Ω</code>表示下界，可以理解为<code>≥</code> ，而<code>θ</code> 既表示上界，也表示下界，所以可以理解为确界。需要补充的是，小写的<code>o</code>表示上界，理解为<code>＜</code>，小写的<code>w</code>表示下界，理解为<code>＞</code>。</p>
+<p>举例：<br>$$<br>T(n)=n^3+n^2<br>$$<br>用大O表示法的时间复杂度为<code>O（n^3</code>）,<code>O(n^4)</code>  ……</p>
+<p>用Ω表示法的时间复杂度为<code>Ω(n^3)</code>,<code>Ω（n^2））</code>，<code>Ω（n）</code>  ……</p>
+<p>用θ表示法的时间复杂度为<code>θ(n^3)</code></p>
+]]></content>
+      <categories>
+        <category>learn_algorithm</category>
+      </categories>
+      <tags>
+        <tag>算法定义</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>学习设计模式-1</title>
     <url>/2019/11/16/designPattern-1/</url>
     <content><![CDATA[<h1 id="实现一个计算器控制台程序，要求输入两个数和运算符号，得到结果。"><a href="#实现一个计算器控制台程序，要求输入两个数和运算符号，得到结果。" class="headerlink" title="实现一个计算器控制台程序，要求输入两个数和运算符号，得到结果。"></a>实现一个计算器控制台程序，要求输入两个数和运算符号，得到结果。</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//最原始的做法</span><br><span class="line">class Program</span><br><span class="line">&#123;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.Write(&quot;请输入数字A：&quot;);</span><br><span class="line">        string A = Console.ReadLine();</span><br><span class="line">        Console.Write(&quot;请选择运算符号(+、-、*、/)：&quot;);</span><br><span class="line">        string B = Console.ReadLine();</span><br><span class="line">        Console.Write(&quot;请输入数字B：&quot;);</span><br><span class="line">        string C = Console.ReadLine();</span><br><span class="line">        string D = &quot;&quot;;</span><br><span class="line"></span><br><span class="line">        if (B == &quot;+&quot;)</span><br><span class="line">            D = Convert.ToString(Convert.ToDouble(A) + Convert.ToDouble(C));</span><br><span class="line">        if (B == &quot;-&quot;)</span><br><span class="line">            D = Convert.ToString(Convert.ToDouble(A) - Convert.ToDouble(C));</span><br><span class="line">        if (B == &quot;*&quot;)</span><br><span class="line">            D = Convert.ToString(Convert.ToDouble(A) * Convert.ToDouble(C));</span><br><span class="line">        if (O == &quot;/&quot;)</span><br><span class="line">            D = Convert.ToString(Convert.ToDouble(A) / Convert.ToDouble(C));</span><br><span class="line"></span><br><span class="line">        Console.WriteLine(&quot;结果是：&quot; + D);</span><br><span class="line">    &#125;     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><a id="more"></a>
@@ -26,14 +158,45 @@
 ]]></content>
       <categories>
         <category>learn designPattern</category>
+        <category>简单工厂模式</category>
       </categories>
+      <tags>
+        <tag>简单工厂模式</tag>
+      </tags>
   </entry>
   <entry>
     <title>学习springboot-1</title>
     <url>/2019/11/16/springboot-1/</url>
-    <content><![CDATA[<h3 id="三个注解"><a href="#三个注解" class="headerlink" title="三个注解"></a>三个注解</h3><p><code>@Value</code>：写在定义单个变量前，与<code>application.yml</code>中的相应位置相对应。</p><p><code>@Component</code>：表明该类是一个组件，表明后才能使用<code>@Autowired</code>进行自动装配。</p><a id="more"></a>
-
+    <content><![CDATA[<h1 id="springboot注解的使用"><a href="#springboot注解的使用" class="headerlink" title="springboot注解的使用"></a>springboot注解的使用</h1><p><code>@Value</code>：写在定义单个变量前，与<code>application.yml</code>中的相应位置相对应。</p><a id="more"></a>
+<p><code>@Component</code>：表明该类是一个组件，表明后才能使用<code>@Autowired</code>进行自动装配。</p>
 <p><code>@ConfigurationProperties</code>：<code>@Value</code>的升级版，直接把一个类的所有变量与<code>application.yml</code>的相应变量组相对应。</p>
+<p><code>@RestController</code>：等于<code>@ResponseBody</code>+<code>@Controller</code>作用之和</p>
+<p><code>@PathVariable</code>：获取url中的数据，用这种方式获取rest风格的url中的id值，如</p>
+<p>访问的url为：<code>localhost:8080/execution/100</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@GetMapping(&quot;/execution/&#123;id&#125;&quot;)</span><br><span class="line">public String methods(@PathVariable(&quot;id&quot;)Integer id)&#123;</span><br><span class="line">     return &quot;id=&quot;+id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><code>@RequestParam</code>：获取请求参数的值，</p>
+<p>访问的url为：<code>localhost:8080/execution?id=100</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@GetMapping(&quot;/execution&quot;)</span><br><span class="line">public String methods(@RequestParam(&quot;id&quot;)Integer id)&#123;</span><br><span class="line">     return &quot;id=&quot;+id;</span><br><span class="line">&#125;</span><br><span class="line">//这里的参数可以不传或设置默认值</span><br><span class="line">@GetMapping(&quot;/execution&quot;)</span><br><span class="line">public String methods(@RequestParam(value= &quot;id&quot;, required = false, defaultValue = &quot;0&quot;)Integer id)&#123;</span><br><span class="line">     return &quot;id=&quot;+id; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><code>@Transactional</code>：开启事务，注意这只是对java程序的设置，真正能否实现还得看数据库是否支持事务，如发现开启事务后，数据库仍未支持事务，这是可能需要更换数据库引擎（如<code>mysql</code>的设置成<code>InnoDB</code>）。<code>navicate</code>更改方式如下（先打开<code>设计表</code>，全选所有字段后，然后选择<code>选项</code>）。</p>
+<p><img src="/imgs/springboot-1/springboot1.png" alt>_</p>
+<p><code>@Valid</code>注解与实体类中对应属性上的限制注解，如<code>@Min</code>、<code>NotEmpty</code>等相结合，实现表单验证功能。</p>
+<p>如<code>@Min(value = 18,message = &quot;msg&quot;)</code> 表明最小值为18，如错误则设置<code>message</code>为<code>msg</code>，同时在<code>@Valid</code>使用后，添加<code>BindingResult bindingResult</code>参数，通过<code>BindingResult</code>的<code>hasErrors</code>方法判断是否错误，同时可以通过<code>BindingResult</code>的<code>getFieldError</code>的<code>getDefaultMessage</code> 方法得到实体类中设置的<code>message</code>值。</p>
+<p>举例如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//Girl实体类中</span><br><span class="line">@Min(Value = 18,message = &quot;年龄不能小于18岁&quot;)</span><br><span class="line">private Integer age;</span><br><span class="line"></span><br><span class="line">//调用表单方法中</span><br><span class="line">public void methods(@Valid Girl girl,BindingResult bindingResult)&#123;</span><br><span class="line">	if(bindingResult.hasErrors())&#123;</span><br><span class="line">		System.out.println(bindingResult.getFieldError().getDefaultMessage());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="AOP统一处理日志请求"><a href="#AOP统一处理日志请求" class="headerlink" title="AOP统一处理日志请求"></a>AOP统一处理日志请求</h1><ul>
+<li><p>AOP是一种编程范式，与语言无关，是一种程序设计思想。</p>
+<p>   ~  面向切面（AOP）Aspect Oriented Programing</p>
+<p>   ~  面向对象（OOP）Object Oriented Programing</p>
+<p>   ~  面向过程（POP）Procedure Oriented Programing           <em>如C语言。</em></p>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>learn_springboot</category>
