@@ -52,16 +52,18 @@
   };
 </script>
 
-  <meta name="description" content="As a layman">
-<meta property="og:type" content="website">
-<meta property="og:title" content="欢迎来到Eoogle的博客">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;tags&#x2F;%E9%80%92%E5%BD%92%E4%B8%8E%E5%88%86%E6%B2%BB&#x2F;index.html">
+  <meta name="description" content="随机算法随机数随机序列 概率相等（均匀随机） 不可预测 不可重现  目前的计算机中，无法产生真正的随机数，因此在随机算法中使用的随机数 都是一定程度上随机的，即伪随机数。 产生伪随机数的方法：线性同余法……">
+<meta name="keywords" content="随机算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="algorithm-6">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;19&#x2F;algorithm-6&#x2F;index.html">
 <meta property="og:site_name" content="欢迎来到Eoogle的博客">
-<meta property="og:description" content="As a layman">
+<meta property="og:description" content="随机算法随机数随机序列 概率相等（均匀随机） 不可预测 不可重现  目前的计算机中，无法产生真正的随机数，因此在随机算法中使用的随机数 都是一定程度上随机的，即伪随机数。 产生伪随机数的方法：线性同余法……">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-19T10:09:08.041Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/tags/%E9%80%92%E5%BD%92%E4%B8%8E%E5%88%86%E6%B2%BB/">
+<link rel="canonical" href="http://yoursite.com/2019/11/19/algorithm-6/">
 
 
 <script id="page-configurations">
@@ -69,13 +71,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>标签: 递归与分治 | 欢迎来到Eoogle的博客</title>
+  <title>algorithm-6 | 欢迎来到Eoogle的博客</title>
   
 
 
@@ -204,50 +206,139 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">递归与分治
-          <small>标签</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/19/algorithm-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3892820290,3110990494&fm=26&gp=0.jpg">
+      <meta itemprop="name" content="Eoogle">
+      <meta itemprop="description" content="As a layman">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="欢迎来到Eoogle的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          algorithm-6
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-11-19 17:51:20 / 修改时间：18:09:08" itemprop="dateCreated datePublished" datetime="2019-11-19T17:51:20+08:00">2019-11-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/learn-algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">learn algorithm</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
+        <h1 id="随机算法"><a href="#随机算法" class="headerlink" title="随机算法"></a>随机算法</h1><h4 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h4><h5 id="随机序列"><a href="#随机序列" class="headerlink" title="随机序列"></a>随机序列</h5><ul>
+<li>概率相等（均匀随机）</li>
+<li>不可预测</li>
+<li>不可重现</li>
+</ul><ul>
+<li>目前的计算机中，无法产生真正的随机数，因此在随机算法中使用的随机数 都是一定程度上随机的，即伪随机数。</li>
+<li>产生伪随机数的方法：线性同余法……</li>
+</ul><a id="more"></a>
+
+<h4 id="确定性算法"><a href="#确定性算法" class="headerlink" title="确定性算法"></a>确定性算法</h4><p>输入确定，则对这个特定输入的每次运行过程是可重复的，运行结果是一样的。</p>
+<p>比如，对于输入&lt;6,4,5,8,9,3&gt;，正确的插入排序算法对于这个输入，每次的运行过程是一样的，运行结果也是一样的。</p>
+<h4 id="随机算法的基本思想"><a href="#随机算法的基本思想" class="headerlink" title="随机算法的基本思想"></a>随机算法的基本思想</h4><ul>
+<li><p>Randomized Algorithms(随机算法)</p>
+</li>
+<li><p>Probabilistic Algorithms概率算法）</p>
+</li>
+<li><p>引入了随机因素</p>
+</li>
+<li><p>在随机算法中</p>
+<ul>
+<li><p>不要求算法对于所有可能的输入均正确计算</p>
+<ul>
+<li>只要求出现错误的可能性晓得可以忽略的程度。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>另外也不要求对同一输入，算法每次执行时给出相同的结果。</p>
+</li>
+</ul>
+<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><p>有不少问题，目前只有效率很差的确定性求解算法，但用随机算法去求解，可以很快的获得相当可信的结果。</p>
+<h4 id="应用领域"><a href="#应用领域" class="headerlink" title="应用领域"></a>应用领域</h4><ul>
+<li>随机算法在分布式计算、通信、信息检索、计算几何、密码学等血多领域都有着广泛的应用。</li>
+<li>最著名的是在公开密钥体系、RSA算法方面的应用。</li>
+</ul>
+<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><p>通常可以分为两类</p>
+<ul>
+<li>Las Vegas算法</li>
+<li>Monte Carlo算法</li>
+</ul>
+<h4 id="Las-Vegas算法"><a href="#Las-Vegas算法" class="headerlink" title="Las Vegas算法"></a>Las Vegas算法</h4><p>在少数应用中，可能出现求不出解的情况。</p>
+<p>但一旦找到一个解，这个解一定是正确的。</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-17T15:33:45+08:00"
-              content="2019-11-17">
-          11-17
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95/" rel="tag"> <i class="fa fa-tag"></i> 随机算法</a>
+          </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/11/17/algorithm-3/" itemprop="url">
-            <span itemprop="name">algorithm-3</span>
-          </a>
-      </h2>
+        
 
-    </header>
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/11/18/algorithm-5/" rel="next" title="algorithm-5">
+                  <i class="fa fa-chevron-left"></i> algorithm-5
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/11/19/algorithm-7/" rel="prev" title="algorithm-7">
+                  algorithm-7 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
@@ -276,6 +367,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#随机算法"><span class="nav-number">1.</span> <span class="nav-text">随机算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#随机数"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">随机数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#随机序列"><span class="nav-number">1.0.0.1.1.</span> <span class="nav-text">随机序列</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#确定性算法"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">确定性算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#随机算法的基本思想"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">随机算法的基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特点"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用领域"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">应用领域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分类"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Las-Vegas算法"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">Las Vegas算法</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

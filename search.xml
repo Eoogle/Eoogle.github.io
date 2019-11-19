@@ -1,16 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>algorithm-7</title>
+    <url>/2019/11/19/algorithm-7/</url>
+    <content><![CDATA[<h1 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h1><p> 有许多问题，当需要找出它的解集或者要求在某些约束条件下的最优解时，往往可以采用回溯法。</p><p>回溯法的基本做法是<em>搜索</em>，它是一种可以<em>避免不必要搜索的穷举式搜索法</em>。</p><a id="more"></a>
+
+<p>回溯法适合求解一些<em>组合数较大</em>的问题。</p>
+<h4 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h4><ul>
+<li><p>回溯法在问题的解空间树中，按深度优先策略，从根节点出发搜索解空间树。</p>
+</li>
+<li><p>算法搜索至解空间树的任意一点时，先判断该节点是否包含问题的解。</p>
+<ul>
+<li><p>如果肯定不包含，则跳过对该节点为根的子树的搜索，逐层向其祖先节点回溯。</p>
+<ul>
+<li>否则进入该子树，继续按深度优先策略搜索。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="生成问题状态的说明"><a href="#生成问题状态的说明" class="headerlink" title="生成问题状态的说明"></a>生成问题状态的说明</h4><ul>
+<li>扩展节点：一个正在产生儿子的节点成为扩展节点。</li>
+<li>活节点：一个自身已生成但其儿子还没有全部生成的节点称作活节点。</li>
+<li>死节点：一个所有儿子已经产生的节点成为死节点。</li>
+</ul>
+<h4 id="生成问题状态的基本方法"><a href="#生成问题状态的基本方法" class="headerlink" title="生成问题状态的基本方法"></a>生成问题状态的基本方法</h4><p>回溯法：为了避免生成那些不可能产生最优解的问题状态，要不断得利用限界函数（bounding function）来“处死”那些实际上不可能产生所需解的活节点，从而减少问题的计算量。<em>具有限界函数的深度优先生成法</em>称为回溯法。</p>
+<h4 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h4><ol>
+<li>针对所给问题，定义问题的解空间。</li>
+<li>确定易于搜索的解空间结构。</li>
+<li>以深度优先方式搜索解空间，并在搜索过程中用剪枝函数避免无效搜索。</li>
+</ol>
+<h6 id="常用剪枝函数"><a href="#常用剪枝函数" class="headerlink" title="常用剪枝函数"></a>常用剪枝函数</h6><ul>
+<li>用约束函数在扩展节点处剪去不满足约束的子树。</li>
+<li>用限界函数剪去得不到最优解的子树。</li>
+</ul>
+<h4 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h4><p>在搜索至树上任意一点时，先判断该节点对应部分解是否满足约束条件，或是否超过目标函数的界。</p>
+<ul>
+<li>判断该节点是否包含问题的（最优）解<ul>
+<li>不包含，则跳过对以该节点为根的子树的搜索，剪枝（pruning）。 </li>
+<li>包含，则进入以该节点为根的子树，继续按深度优先搜索。</li>
+</ul>
+</li>
+</ul>
+<h4 id="回溯法求解时常见的两类解空间树"><a href="#回溯法求解时常见的两类解空间树" class="headerlink" title="回溯法求解时常见的两类解空间树"></a>回溯法求解时常见的两类解空间树</h4><h5 id="子集树："><a href="#子集树：" class="headerlink" title="子集树："></a>子集树：</h5><p>类似于01背包的，每件物品可取可不取的树。P115</p>
+<h5 id="排列树："><a href="#排列树：" class="headerlink" title="排列树："></a>排列树：</h5><p>类似于tsp问题的，总数为n！的树。P116</p>
+<p>​                       </p>
+<h1 id="分支限界法"><a href="#分支限界法" class="headerlink" title="分支限界法"></a>分支限界法</h1><p>类似于回溯法，是在问题的解空间树上搜索问题解的答案。</p>
+<p>不同点：</p>
+<ul>
+<li>求解目标：回溯法的求解目标是找出解空间树中满足约束条件的所有借，而分支限界法的求解目标则是找出满足约束条件的一个解，或是在满足约束条件的解中找出某种意义下的最优解。</li>
+<li>搜索方式的不同：回溯法以<strong><em>深度优先</em></strong>的方式搜索解空间树，而分支限界法以<strong>广度优先</strong>或以<strong>最小耗费优先</strong>的方式搜索解空间树。</li>
+</ul>
+<h4 id="基本思想-1"><a href="#基本思想-1" class="headerlink" title="基本思想"></a>基本思想</h4><p>分支限界法常以广度优先或以最小耗费（最大收益）优先的方式搜索问题的解空间树。</p>
+<ul>
+<li>在分支限界法中，每一个活节点只有一次机会成为扩展节点。活节点一旦成为扩展节点，就一次性产生其所有儿子节点。在这些儿子节点中，导致不可行解或导致非最优解的儿子节点被舍弃，其余儿子节点被加入活结点表中。</li>
+<li>此后，从活节点表中取下一节点成为当前扩展节点，并重复上述节点扩展过程。这个郭晨肝移植持续到找到所需的解或者活结点表为空为止。</li>
+</ul>
+<h4 id="常见的两种分支限界法"><a href="#常见的两种分支限界法" class="headerlink" title="常见的两种分支限界法"></a>常见的两种分支限界法</h4><h5 id="队列式（FIFO）分支限界法"><a href="#队列式（FIFO）分支限界法" class="headerlink" title="队列式（FIFO）分支限界法"></a>队列式（FIFO）分支限界法</h5><p>按照队列先进先出（FIFO）原则选取下一个节点为扩展节点。</p>
+<h5 id="优先队列式分支限界法"><a href="#优先队列式分支限界法" class="headerlink" title="优先队列式分支限界法"></a>优先队列式分支限界法</h5><ul>
+<li>按照优先队列中规定的优先级选取优先级最高的节点成为当前扩展节点。</li>
+<li>应用优先队列式分支限界法求解具体问题时，应该根据具体问题的特点确定选用最大优先队列活着最小优先队列表示解空间的活结点表。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>learn algorithm</category>
+      </categories>
+      <tags>
+        <tag>回溯法</tag>
+        <tag>分支限界法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>algorithm-6</title>
+    <url>/2019/11/19/algorithm-6/</url>
+    <content><![CDATA[<h1 id="随机算法"><a href="#随机算法" class="headerlink" title="随机算法"></a>随机算法</h1><h4 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h4><h5 id="随机序列"><a href="#随机序列" class="headerlink" title="随机序列"></a>随机序列</h5><ul>
+<li>概率相等（均匀随机）</li>
+<li>不可预测</li>
+<li>不可重现</li>
+</ul><ul>
+<li>目前的计算机中，无法产生真正的随机数，因此在随机算法中使用的随机数 都是一定程度上随机的，即伪随机数。</li>
+<li>产生伪随机数的方法：线性同余法……</li>
+</ul><a id="more"></a>
+
+<h4 id="确定性算法"><a href="#确定性算法" class="headerlink" title="确定性算法"></a>确定性算法</h4><p>输入确定，则对这个特定输入的每次运行过程是可重复的，运行结果是一样的。</p>
+<p>比如，对于输入&lt;6,4,5,8,9,3&gt;，正确的插入排序算法对于这个输入，每次的运行过程是一样的，运行结果也是一样的。</p>
+<h4 id="随机算法的基本思想"><a href="#随机算法的基本思想" class="headerlink" title="随机算法的基本思想"></a>随机算法的基本思想</h4><ul>
+<li><p>Randomized Algorithms(随机算法)</p>
+</li>
+<li><p>Probabilistic Algorithms概率算法）</p>
+</li>
+<li><p>引入了随机因素</p>
+</li>
+<li><p>在随机算法中</p>
+<ul>
+<li><p>不要求算法对于所有可能的输入均正确计算</p>
+<ul>
+<li>只要求出现错误的可能性晓得可以忽略的程度。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>另外也不要求对同一输入，算法每次执行时给出相同的结果。</p>
+</li>
+</ul>
+<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><p>有不少问题，目前只有效率很差的确定性求解算法，但用随机算法去求解，可以很快的获得相当可信的结果。</p>
+<h4 id="应用领域"><a href="#应用领域" class="headerlink" title="应用领域"></a>应用领域</h4><ul>
+<li>随机算法在分布式计算、通信、信息检索、计算几何、密码学等血多领域都有着广泛的应用。</li>
+<li>最著名的是在公开密钥体系、RSA算法方面的应用。</li>
+</ul>
+<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><p>通常可以分为两类</p>
+<ul>
+<li>Las Vegas算法</li>
+<li>Monte Carlo算法</li>
+</ul>
+<h4 id="Las-Vegas算法"><a href="#Las-Vegas算法" class="headerlink" title="Las Vegas算法"></a>Las Vegas算法</h4><p>在少数应用中，可能出现求不出解的情况。</p>
+<p>但一旦找到一个解，这个解一定是正确的。</p>
+]]></content>
+      <categories>
+        <category>learn algorithm</category>
+      </categories>
+      <tags>
+        <tag>随机算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>algorithm-5</title>
     <url>/2019/11/18/algorithm-5/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h1><h4 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h4><ul>
+<li>适用于求解最优化问题的算法往往包含一系列步骤，每一步都有一组选择。</li>
+<li>贪心算法总是作出在当前看来是最好的选择。</li>
+<li>贪心算法并不从整体最优上加以考虑，他所作出的选择只是在某种意义上的局部最优选择。</li>
+<li>贪心算法不能对所有问题都得到整体最优解，但对许多问题他能产生整体最优解。</li>
+<li>在一些情况下，即使贪心算法不能得到整体最优解，其最终结果却是最优解的很好近似。</li>
+<li>与动态规划方法相比，贪心算法更简单，更直接。</li>
+</ul><a id="more"></a>
+<h4 id="基本要素"><a href="#基本要素" class="headerlink" title="基本要素"></a>基本要素</h4><ol>
+<li>最优子结构性质</li>
+<li>贪心选择性质：贪心算法通过做一系列的选择来给出某一问题的最优解。他所作出的每一个选择当前状态下的最好选择（局部），即贪心选择。</li>
+</ol>
+<h4 id="贪心选择性质"><a href="#贪心选择性质" class="headerlink" title="贪心选择性质"></a>贪心选择性质</h4><ul>
+<li>是指所求问题的整体最优解可以通过一系列局部最优的选择，即贪心选择来达到。</li>
+<li>这是贪心算法可行的第一个基本要素，也是贪心算法与动态规划算法的主要区别。</li>
+<li>动态规划算法通常以自底向上的方式解决各子问题。</li>
+<li>贪心算法则通常以自顶向下的方式进行，以迭代的方式作出相继的贪心选择，每做一次贪心选择就将所求问题简化为规模更小的子问题。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>learn algorithm</category>
+      </categories>
+      <tags>
+        <tag>贪心算法</tag>
+      </tags>
   </entry>
   <entry>
     <title>algorithm-4</title>
     <url>/2019/11/18/algorithm-4/</url>
     <content><![CDATA[<h1 id="动态规划（dynamic-programing）"><a href="#动态规划（dynamic-programing）" class="headerlink" title="动态规划（dynamic programing）"></a>动态规划（dynamic programing）</h1><h4 id="分治法求解"><a href="#分治法求解" class="headerlink" title="分治法求解"></a>分治法求解</h4><p>子问题相互独立，不包含公共子问题。</p><h4 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h4><ul>
 <li>与分治法类似，也是将问题分解为规模逐渐减小的同类型的子问题。</li>
-<li>与分治法不同的是，分解得到的子问题旺旺不是互相独立的。</li>
+<li>与分治法不同的是，分解得到的子问题往往不是互相独立的。</li>
 </ul><a id="more"></a>
 
 <h4 id="相关的重要概念"><a href="#相关的重要概念" class="headerlink" title="相关的重要概念"></a>相关的重要概念</h4><ul>

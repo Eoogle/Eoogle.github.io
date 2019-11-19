@@ -52,18 +52,18 @@
   };
 </script>
 
-  <meta name="description" content="贪心算法基本思想 适用于求解最优化问题的算法往往包含一系列步骤，每一步都有一组选择。 贪心算法总是作出在当前看来是最好的选择。 贪心算法并不从整体最优上加以考虑，他所作出的选择只是在某种意义上的局部最优选择。 贪心算法不能对所有问题都得到整体最优解，但对许多问题他能产生整体最优解。 在一些情况下，即使贪心算法不能得到整体最优解，其最终结果却是最优解的很好近似。 与动态规划方法相比，贪心算法更简单，">
-<meta name="keywords" content="贪心算法">
+  <meta name="description" content="回溯法 有许多问题，当需要找出它的解集或者要求在某些约束条件下的最优解时，往往可以采用回溯法。回溯法的基本做法是搜索，它是一种可以避免不必要搜索的穷举式搜索法。">
+<meta name="keywords" content="回溯法,分支限界法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="algorithm-5">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;18&#x2F;algorithm-5&#x2F;index.html">
+<meta property="og:title" content="algorithm-7">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;19&#x2F;algorithm-7&#x2F;index.html">
 <meta property="og:site_name" content="欢迎来到Eoogle的博客">
-<meta property="og:description" content="贪心算法基本思想 适用于求解最优化问题的算法往往包含一系列步骤，每一步都有一组选择。 贪心算法总是作出在当前看来是最好的选择。 贪心算法并不从整体最优上加以考虑，他所作出的选择只是在某种意义上的局部最优选择。 贪心算法不能对所有问题都得到整体最优解，但对许多问题他能产生整体最优解。 在一些情况下，即使贪心算法不能得到整体最优解，其最终结果却是最优解的很好近似。 与动态规划方法相比，贪心算法更简单，">
+<meta property="og:description" content="回溯法 有许多问题，当需要找出它的解集或者要求在某些约束条件下的最优解时，往往可以采用回溯法。回溯法的基本做法是搜索，它是一种可以避免不必要搜索的穷举式搜索法。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-18T16:27:57.157Z">
+<meta property="og:updated_time" content="2019-11-19T16:41:27.416Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2019/11/18/algorithm-5/">
+<link rel="canonical" href="http://yoursite.com/2019/11/19/algorithm-7/">
 
 
 <script id="page-configurations">
@@ -77,7 +77,7 @@
   };
 </script>
 
-  <title>algorithm-5 | 欢迎来到Eoogle的博客</title>
+  <title>algorithm-7 | 欢迎来到Eoogle的博客</title>
   
 
 
@@ -211,7 +211,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/18/algorithm-5/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/19/algorithm-7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3892820290,3110990494&fm=26&gp=0.jpg">
@@ -224,7 +224,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          algorithm-5
+          algorithm-7
         </h1>
 
         <div class="post-meta">
@@ -234,14 +234,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-11-18 22:24:06" itemprop="dateCreated datePublished" datetime="2019-11-18T22:24:06+08:00">2019-11-18</time>
+              <time title="创建时间：2019-11-19 21:18:14" itemprop="dateCreated datePublished" datetime="2019-11-19T21:18:14+08:00">2019-11-19</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-19 00:27:57" itemprop="dateModified" datetime="2019-11-19T00:27:57+08:00">2019-11-19</time>
+                <time title="修改时间：2019-11-20 00:41:27" itemprop="dateModified" datetime="2019-11-20T00:41:27+08:00">2019-11-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -266,23 +266,63 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h1><h4 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h4><ul>
-<li>适用于求解最优化问题的算法往往包含一系列步骤，每一步都有一组选择。</li>
-<li>贪心算法总是作出在当前看来是最好的选择。</li>
-<li>贪心算法并不从整体最优上加以考虑，他所作出的选择只是在某种意义上的局部最优选择。</li>
-<li>贪心算法不能对所有问题都得到整体最优解，但对许多问题他能产生整体最优解。</li>
-<li>在一些情况下，即使贪心算法不能得到整体最优解，其最终结果却是最优解的很好近似。</li>
-<li>与动态规划方法相比，贪心算法更简单，更直接。</li>
-</ul><a id="more"></a>
-<h4 id="基本要素"><a href="#基本要素" class="headerlink" title="基本要素"></a>基本要素</h4><ol>
-<li>最优子结构性质</li>
-<li>贪心选择性质：贪心算法通过做一系列的选择来给出某一问题的最优解。他所作出的每一个选择当前状态下的最好选择（局部），即贪心选择。</li>
+        <h1 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h1><p> 有许多问题，当需要找出它的解集或者要求在某些约束条件下的最优解时，往往可以采用回溯法。</p><p>回溯法的基本做法是<em>搜索</em>，它是一种可以<em>避免不必要搜索的穷举式搜索法</em>。</p><a id="more"></a>
+
+<p>回溯法适合求解一些<em>组合数较大</em>的问题。</p>
+<h4 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h4><ul>
+<li><p>回溯法在问题的解空间树中，按深度优先策略，从根节点出发搜索解空间树。</p>
+</li>
+<li><p>算法搜索至解空间树的任意一点时，先判断该节点是否包含问题的解。</p>
+<ul>
+<li><p>如果肯定不包含，则跳过对该节点为根的子树的搜索，逐层向其祖先节点回溯。</p>
+<ul>
+<li>否则进入该子树，继续按深度优先策略搜索。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="生成问题状态的说明"><a href="#生成问题状态的说明" class="headerlink" title="生成问题状态的说明"></a>生成问题状态的说明</h4><ul>
+<li>扩展节点：一个正在产生儿子的节点成为扩展节点。</li>
+<li>活节点：一个自身已生成但其儿子还没有全部生成的节点称作活节点。</li>
+<li>死节点：一个所有儿子已经产生的节点成为死节点。</li>
+</ul>
+<h4 id="生成问题状态的基本方法"><a href="#生成问题状态的基本方法" class="headerlink" title="生成问题状态的基本方法"></a>生成问题状态的基本方法</h4><p>回溯法：为了避免生成那些不可能产生最优解的问题状态，要不断得利用限界函数（bounding function）来“处死”那些实际上不可能产生所需解的活节点，从而减少问题的计算量。<em>具有限界函数的深度优先生成法</em>称为回溯法。</p>
+<h4 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h4><ol>
+<li>针对所给问题，定义问题的解空间。</li>
+<li>确定易于搜索的解空间结构。</li>
+<li>以深度优先方式搜索解空间，并在搜索过程中用剪枝函数避免无效搜索。</li>
 </ol>
-<h4 id="贪心选择性质"><a href="#贪心选择性质" class="headerlink" title="贪心选择性质"></a>贪心选择性质</h4><ul>
-<li>是指所求问题的整体最优解可以通过一系列局部最优的选择，即贪心选择来达到。</li>
-<li>这是贪心算法可行的第一个基本要素，也是贪心算法与动态规划算法的主要区别。</li>
-<li>动态规划算法通常以自底向上的方式解决各子问题。</li>
-<li>贪心算法则通常以自顶向下的方式进行，以迭代的方式作出相继的贪心选择，每做一次贪心选择就将所求问题简化为规模更小的子问题。</li>
+<h6 id="常用剪枝函数"><a href="#常用剪枝函数" class="headerlink" title="常用剪枝函数"></a>常用剪枝函数</h6><ul>
+<li>用约束函数在扩展节点处剪去不满足约束的子树。</li>
+<li>用限界函数剪去得不到最优解的子树。</li>
+</ul>
+<h4 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h4><p>在搜索至树上任意一点时，先判断该节点对应部分解是否满足约束条件，或是否超过目标函数的界。</p>
+<ul>
+<li>判断该节点是否包含问题的（最优）解<ul>
+<li>不包含，则跳过对以该节点为根的子树的搜索，剪枝（pruning）。 </li>
+<li>包含，则进入以该节点为根的子树，继续按深度优先搜索。</li>
+</ul>
+</li>
+</ul>
+<h4 id="回溯法求解时常见的两类解空间树"><a href="#回溯法求解时常见的两类解空间树" class="headerlink" title="回溯法求解时常见的两类解空间树"></a>回溯法求解时常见的两类解空间树</h4><h5 id="子集树："><a href="#子集树：" class="headerlink" title="子集树："></a>子集树：</h5><p>类似于01背包的，每件物品可取可不取的树。P115</p>
+<h5 id="排列树："><a href="#排列树：" class="headerlink" title="排列树："></a>排列树：</h5><p>类似于tsp问题的，总数为n！的树。P116</p>
+<p>​                       </p>
+<h1 id="分支限界法"><a href="#分支限界法" class="headerlink" title="分支限界法"></a>分支限界法</h1><p>类似于回溯法，是在问题的解空间树上搜索问题解的答案。</p>
+<p>不同点：</p>
+<ul>
+<li>求解目标：回溯法的求解目标是找出解空间树中满足约束条件的所有借，而分支限界法的求解目标则是找出满足约束条件的一个解，或是在满足约束条件的解中找出某种意义下的最优解。</li>
+<li>搜索方式的不同：回溯法以<strong><em>深度优先</em></strong>的方式搜索解空间树，而分支限界法以<strong>广度优先</strong>或以<strong>最小耗费优先</strong>的方式搜索解空间树。</li>
+</ul>
+<h4 id="基本思想-1"><a href="#基本思想-1" class="headerlink" title="基本思想"></a>基本思想</h4><p>分支限界法常以广度优先或以最小耗费（最大收益）优先的方式搜索问题的解空间树。</p>
+<ul>
+<li>在分支限界法中，每一个活节点只有一次机会成为扩展节点。活节点一旦成为扩展节点，就一次性产生其所有儿子节点。在这些儿子节点中，导致不可行解或导致非最优解的儿子节点被舍弃，其余儿子节点被加入活结点表中。</li>
+<li>此后，从活节点表中取下一节点成为当前扩展节点，并重复上述节点扩展过程。这个郭晨肝移植持续到找到所需的解或者活结点表为空为止。</li>
+</ul>
+<h4 id="常见的两种分支限界法"><a href="#常见的两种分支限界法" class="headerlink" title="常见的两种分支限界法"></a>常见的两种分支限界法</h4><h5 id="队列式（FIFO）分支限界法"><a href="#队列式（FIFO）分支限界法" class="headerlink" title="队列式（FIFO）分支限界法"></a>队列式（FIFO）分支限界法</h5><p>按照队列先进先出（FIFO）原则选取下一个节点为扩展节点。</p>
+<h5 id="优先队列式分支限界法"><a href="#优先队列式分支限界法" class="headerlink" title="优先队列式分支限界法"></a>优先队列式分支限界法</h5><ul>
+<li>按照优先队列中规定的优先级选取优先级最高的节点成为当前扩展节点。</li>
+<li>应用优先队列式分支限界法求解具体问题时，应该根据具体问题的特点确定选用最大优先队列活着最小优先队列表示解空间的活结点表。</li>
 </ul>
 
     </div>
@@ -293,24 +333,22 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag"> <i class="fa fa-tag"></i> 贪心算法</a>
+              <a href="/tags/%E5%9B%9E%E6%BA%AF%E6%B3%95/" rel="tag"> <i class="fa fa-tag"></i> 回溯法</a>
+              <a href="/tags/%E5%88%86%E6%94%AF%E9%99%90%E7%95%8C%E6%B3%95/" rel="tag"> <i class="fa fa-tag"></i> 分支限界法</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2019/11/18/algorithm-4/" rel="next" title="algorithm-4">
-                  <i class="fa fa-chevron-left"></i> algorithm-4
+                <a href="/2019/11/19/algorithm-6/" rel="next" title="algorithm-6">
+                  <i class="fa fa-chevron-left"></i> algorithm-6
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/11/19/algorithm-6/" rel="prev" title="algorithm-6">
-                  algorithm-6 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
@@ -349,7 +387,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#贪心算法"><span class="nav-number">1.</span> <span class="nav-text">贪心算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本思想"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本要素"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">基本要素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#贪心选择性质"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">贪心选择性质</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#回溯法"><span class="nav-number">1.</span> <span class="nav-text">回溯法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本思想"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成问题状态的说明"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">生成问题状态的说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成问题状态的基本方法"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">生成问题状态的基本方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本步骤"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">基本步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#常用剪枝函数"><span class="nav-number">1.0.0.4.0.1.</span> <span class="nav-text">常用剪枝函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#要点"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">要点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回溯法求解时常见的两类解空间树"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">回溯法求解时常见的两类解空间树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#子集树："><span class="nav-number">1.0.0.6.1.</span> <span class="nav-text">子集树：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#排列树："><span class="nav-number">1.0.0.6.2.</span> <span class="nav-text">排列树：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分支限界法"><span class="nav-number">2.</span> <span class="nav-text">分支限界法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本思想-1"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的两种分支限界法"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">常见的两种分支限界法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#队列式（FIFO）分支限界法"><span class="nav-number">2.0.0.2.1.</span> <span class="nav-text">队列式（FIFO）分支限界法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#优先队列式分支限界法"><span class="nav-number">2.0.0.2.2.</span> <span class="nav-text">优先队列式分支限界法</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
