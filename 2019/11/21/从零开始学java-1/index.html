@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/tiger32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/tiger16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="命令提示符（cmd(command)）启动：win+r切换盘符：盘符名称：进入文件夹：cd 文件夹名称">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零开始学java-1">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;21&#x2F;%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6java-1&#x2F;index.html">
+<meta property="og:site_name" content="欢迎来到Eoogle的博客">
+<meta property="og:description" content="命令提示符（cmd(command)）启动：win+r切换盘符：盘符名称：进入文件夹：cd 文件夹名称">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;java&#x2F;jvm.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;java&#x2F;jdk2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;java&#x2F;jdk.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;java&#x2F;peizhi.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;java&#x2F;compile.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;java&#x2F;changliang.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;java&#x2F;shujuleixing.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;java&#x2F;zuoyongyu.png">
+<meta property="og:updated_time" content="2019-11-22T07:58:33.221Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;imgs&#x2F;java&#x2F;jvm.png">
+
+<link rel="canonical" href="http://yoursite.com/2019/11/21/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6java-1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>从零开始学java-1 | 欢迎来到Eoogle的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">欢迎来到Eoogle的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/21/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6java-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3892820290,3110990494&fm=26&gp=0.jpg">
+      <meta itemprop="name" content="Eoogle">
+      <meta itemprop="description" content="As a layman">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="欢迎来到Eoogle的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          从零开始学java-1
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-21 20:35:34" itemprop="dateCreated datePublished" datetime="2019-11-21T20:35:34+08:00">2019-11-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-22 15:58:33" itemprop="dateModified" datetime="2019-11-22T15:58:33+08:00">2019-11-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/learn-java/" itemprop="url" rel="index">
+                    <span itemprop="name">learn java</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="命令提示符（cmd-command-）"><a href="#命令提示符（cmd-command-）" class="headerlink" title="命令提示符（cmd(command)）"></a>命令提示符（cmd(command)）</h2><p>启动：win+r</p><p>切换盘符：盘符名称：</p><p>进入文件夹：cd 文件夹名称</p><a id="more"></a>
+
+
+<p>进入多级文件夹：cd 文件夹1\文件夹2...</p>
+<p>后退到根目录：cd \ </p>
+<h2 id><a href="#" class="headerlink" title></a></h2><p><strong>JVM</strong>（Java Virtual Machine ）：Java虚拟机，简称JVM，是运行所有Java程序的假想计算机，是Java程序的 运行环境，是Java 最具吸引力的特性之一。我们编写的Java代码，都运行在 JVM 之上。 <strong>跨平台</strong>：任何软件的运行，都必须要运行在操作系统之上，而我们用Java编写的软件可以运行在任何的操作系 统上，这个特性称为<strong>Java**</strong>语言的跨平台特性**。该特性是由JVM实现的，我们编写的程序运行在JVM上，而JVM 运行在操作系统上。 查看文件夹文件列表：dir</p>
+<p>清屏：cls</p>
+<p>退出：exit</p>
+<hr>
+<h2 id="Java虚拟机–JVM"><a href="#Java虚拟机–JVM" class="headerlink" title="Java虚拟机–JVM"></a>Java虚拟机–JVM</h2><ul>
+<li><strong>JVM</strong>（Java Virtual Machine ）：Java虚拟机，简称JVM，是运行所有Java程序的假想计算机，是Java程序的 运行环境，是Java 最具吸引力的特性之一。我们编写的Java代码，都运行在 JVM 之上。 </li>
+<li><strong>跨平台</strong>：任何软件的运行，都必须要运行在操作系统之上，而我们用Java编写的软件可以运行在任何的操作系 统上，这个特性称为<strong>Java</strong>语言的跨平台特性。该特性是由JVM实现的，我们编写的程序运行在JVM上，而JVM 运行在操作系统上。 </li>
+</ul>
+<p><img src="/imgs/java/jvm.png" alt></p>
+<p>如图所示，Java的虚拟机本身不具备跨平台功能的，每个操作系统下都有不同版本的虚拟机。</p>
+<hr>
+<h2 id="JRE和JDK"><a href="#JRE和JDK" class="headerlink" title="JRE和JDK"></a>JRE和JDK</h2><p><strong>JRE</strong> (Java Runtime Environment) ：是Java程序的运行时环境，包含 JVM 和运行时所需要的 核心类库 。 </p>
+<p><strong>JDK</strong> (Java Development Kit)：是Java程序开发工具包，包含 JRE 和开发人员使用的工具。 我们想要运行一个已有的Java程序，那么只需安装 JRE 即可。 我们想要开发一个全新的Java程序，那么必须安装 JDK 。 </p>
+<p><img src="/imgs/java/jdk2.png" alt></p>
+<p><img src="/imgs/java/jdk.png" alt></p>
+<p>小贴士： 三者关系： JDK &gt; JRE &gt; JVM </p>
+<hr>
+<h2 id="环境变量的设置"><a href="#环境变量的设置" class="headerlink" title="环境变量的设置"></a>环境变量的设置</h2><p><img src="/imgs/java/peizhi.png" alt></p>
+<p>在系统变量中这样设置即可。</p>
+<hr>
+<h2 id="编译与运行"><a href="#编译与运行" class="headerlink" title="编译与运行"></a>编译与运行</h2><p>javac编译.java文件生成.class文件</p>
+<p>java执行.class文件，但是命令不需要.class后缀</p>
+<p><img src="/imgs/java/compile.png" alt></p>
+<hr>
+<h2 id="常量类型"><a href="#常量类型" class="headerlink" title="常量类型"></a>常量类型</h2><p><img src="/imgs/java/changliang.png" alt></p>
+<p><code>&quot;&quot;</code>能输出（空字符串能输出），<code>&#39;&#39;</code>不能输出（不能为空字符，加一个空格则正确）。</p>
+<hr>
+<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>基本数据类型<br>    整数型    byte short int long<br>    浮点型    float double<br>    字符型    char<br>    布尔型    boolean</p>
+<p>引用数据类型（今后学习）<br>    字符串、数组、类、接口、Lambda</p>
+<p>注意事项：</p>
+<ol>
+<li><p>字符串不是基本类型，而是引用类型。</p>
+</li>
+<li><p>浮点型可能只是一个近似值，并非精确的值。</p>
+</li>
+<li><p>数据范围与字节数不一定相关，例如float数据范围比long更加广泛，但是float是4字节，long是8字节。</p>
+</li>
+<li><p>浮点数当中默认类型是double。如果一定要使用float类型，需要加上一个后缀F。<br>如果是整数，默认为int类型，如果一定要使用long类型，需要加上一个后缀L。推荐使用大写字母后缀。</p>
+</li>
+</ol>
+<p>   <strong>四类八种基本数据类型：</strong></p>
+<p><img src="/imgs/java/shujuleixing.png" alt></p>
+<h5 id="注意变量的作用域"><a href="#注意变量的作用域" class="headerlink" title="注意变量的作用域"></a>注意变量的作用域</h5><p><img src="/imgs/java/zuoyongyu.png" alt></p>
+<p>可在{}外定义相同名字的变量</p>
+<p><strong>有时候if语句中定义的变量，{}外面不能使用。</strong></p>
+<hr>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><h4 id="自动类型转换（隐式）"><a href="#自动类型转换（隐式）" class="headerlink" title="自动类型转换（隐式）"></a>自动类型转换（隐式）</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">当数据类型不一样时，将会发生数据类型转换。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">自动类型转换（隐式）</span></span><br><span class="line"><span class="comment">	1. 特点：代码不需要进行特殊处理，自动完成。</span></span><br><span class="line"><span class="comment">	2. 规则：数据范围从小到大。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">强制类型转换（显式）</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01DataType</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="number">1024</span>); <span class="comment">// 这就是一个整数，默认就是int类型</span></span><br><span class="line">		System.out.println(<span class="number">3.14</span>); <span class="comment">// 这就是一个浮点数，默认就是double类型</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 左边是long类型，右边是默认的int类型，左右不一样</span></span><br><span class="line">		<span class="comment">// 一个等号代表赋值，将右侧的int常量，交给左侧的long变量进行存储</span></span><br><span class="line">		<span class="comment">// int --&gt; long，符合了数据范围从小到大的要求</span></span><br><span class="line">		<span class="comment">// 这一行代码发生了自动类型转换。</span></span><br><span class="line">		<span class="keyword">long</span> num1 = <span class="number">100</span>;</span><br><span class="line">		System.out.println(num1); <span class="comment">// 100</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 左边是double类型，右边是float类型，左右不一样</span></span><br><span class="line">		<span class="comment">// float --&gt; double，符合从小到大的规则</span></span><br><span class="line">		<span class="comment">// 也发生了自动类型转换</span></span><br><span class="line">		<span class="keyword">double</span> num2 = <span class="number">2.5F</span>;</span><br><span class="line">		System.out.println(num2); <span class="comment">// 2.5</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 左边是float类型，右边是long类型，左右不一样</span></span><br><span class="line">		<span class="comment">// long --&gt; float，范围是float更大一些，符合从小到大的规则</span></span><br><span class="line">		<span class="comment">// 也发生了自动类型转换</span></span><br><span class="line">		<span class="keyword">float</span> num3 = <span class="number">30L</span>;</span><br><span class="line">		System.out.println(num3); <span class="comment">// 30.0</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">对于byte/short/char三种类型来说，如果右侧赋值的数值没有超过范围，</span></span><br><span class="line"><span class="comment">那么javac编译器将会自动隐含地为我们补上一个(byte)(short)(char)。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">1. 如果没有超过左侧的范围，编译器补上强转。</span></span><br><span class="line"><span class="comment">2. 如果右侧超过了左侧范围，那么直接编译器报错。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo12Notice</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 右侧确实是一个int数字，但是没有超过左侧的范围，就是正确的。</span></span><br><span class="line">		<span class="comment">// int --&gt; byte，不是自动类型转换</span></span><br><span class="line">		<span class="keyword">byte</span> num1 = <span class="comment">/*(byte)*/</span> <span class="number">30</span>; <span class="comment">// 右侧没有超过左侧的范围</span></span><br><span class="line">		System.out.println(num1); <span class="comment">// 30</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">// byte num2 = 128; // 右侧超过了左侧的范围</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">// int --&gt; char，没有超过范围</span></span><br><span class="line">		<span class="comment">// 编译器将会自动补上一个隐含的(char)</span></span><br><span class="line">		<span class="keyword">char</span> zifu = <span class="comment">/*(char)*/</span> <span class="number">65</span>;</span><br><span class="line">		System.out.println(zifu); <span class="comment">// A</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">在给变量进行赋值的时候，如果右侧的表达式当中全都是常量，没有任何变量，</span></span><br><span class="line"><span class="comment">那么编译器javac将会直接将若干个常量表达式计算得到结果。</span></span><br><span class="line"><span class="comment">short result = 5 + 8; // 等号右边全都是常量，没有任何变量参与运算</span></span><br><span class="line"><span class="comment">编译之后，得到的.class字节码文件当中相当于【直接就是】：</span></span><br><span class="line"><span class="comment">short result = 13;</span></span><br><span class="line"><span class="comment">右侧的常量结果数值，没有超过左侧范围，所以正确。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">这称为“编译器的常量优化”。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">但是注意：一旦表达式当中有变量参与，那么就不能进行这种优化了。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo13Notice</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">short</span> num1 = <span class="number">10</span>; <span class="comment">// 正确写法，右侧没有超过左侧的范围，</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">short</span> a = <span class="number">5</span>;</span><br><span class="line">		<span class="keyword">short</span> b = <span class="number">8</span>;</span><br><span class="line">		<span class="comment">// short + short --&gt; int + int --&gt; int</span></span><br><span class="line">		<span class="comment">// short result = a + b; // 错误写法！左侧需要是int类型</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 右侧不用变量，而是采用常量，而且只有两个常量，没有别人</span></span><br><span class="line">		<span class="keyword">short</span> result = <span class="number">5</span> + <span class="number">8</span>;</span><br><span class="line">		System.out.println(result);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">short</span> result2 = <span class="number">5</span> + a + <span class="number">8</span>; <span class="comment">// 18</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="强制类型转换（显式）"><a href="#强制类型转换（显式）" class="headerlink" title="强制类型转换（显式）"></a>强制类型转换（显式）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">强制类型转换</span></span><br><span class="line"><span class="comment">	1. 特点：代码需要进行特殊的格式处理，不能自动完成。</span></span><br><span class="line"><span class="comment">	2. 格式：范围小的类型 范围小的变量名 = (范围小的类型) 原本范围大的数据;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">注意事项：</span></span><br><span class="line"><span class="comment">	1. 强制类型转换一般不推荐使用，因为有可能发生精度损失、数据溢出。</span></span><br><span class="line"><span class="comment">	2. byte/short/char这三种类型都可以发生数学运算，例如加法“+”.</span></span><br><span class="line"><span class="comment">	3. byte/short/char这三种类型在运算的时候，都会被首先提升成为int类型，然后再计算。</span></span><br><span class="line"><span class="comment">	4. boolean类型不能发生数据类型转换</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02DataType</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 左边是int类型，右边是long类型，不一样</span></span><br><span class="line">		<span class="comment">// long --&gt; int，不是从小到大</span></span><br><span class="line">		<span class="comment">// 不能发生自动类型转换！</span></span><br><span class="line">		<span class="comment">// 格式：范围小的类型 范围小的变量名 = (范围小的类型) 原本范围大的数据;</span></span><br><span class="line">		<span class="keyword">int</span> num = (<span class="keyword">int</span>) <span class="number">100L</span>;</span><br><span class="line">		System.out.println(num);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// long强制转换成为int类型</span></span><br><span class="line">		<span class="keyword">int</span> num2 = (<span class="keyword">int</span>) <span class="number">6000000000L</span>;</span><br><span class="line">		System.out.println(num2); <span class="comment">// 1705032704</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">// double --&gt; int，强制类型转换</span></span><br><span class="line">		<span class="keyword">int</span> num3 = (<span class="keyword">int</span>) <span class="number">3.99</span>;</span><br><span class="line">		System.out.println(num3); <span class="comment">// 3，这并不是四舍五入，所有的小数位都会被舍弃掉</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">char</span> zifu1 = <span class="string">'A'</span>; <span class="comment">// 这是一个字符型变量，里面是大写字母A</span></span><br><span class="line">		System.out.println(zifu1 + <span class="number">1</span>); <span class="comment">// 66，也就是大写字母A被当做65进行处理</span></span><br><span class="line">		<span class="comment">// 计算机的底层会用一个数字（二进制）来代表字符A，就是65</span></span><br><span class="line">		<span class="comment">// 一旦char类型进行了数学运算，那么字符就会按照一定的规则翻译成为一个数字</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">byte</span> num4 = <span class="number">40</span>; <span class="comment">// 注意！右侧的数值大小不能超过左侧的类型范围</span></span><br><span class="line">		<span class="keyword">byte</span> num5 = <span class="number">50</span>;</span><br><span class="line">		<span class="comment">// byte + byte --&gt; int + int --&gt; int</span></span><br><span class="line">		<span class="keyword">int</span> result1 = num4 + num5;</span><br><span class="line">		System.out.println(result1); <span class="comment">// 90</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">short</span> num6 = <span class="number">60</span>;</span><br><span class="line">		<span class="comment">// byte + short --&gt; int + int --&gt; int</span></span><br><span class="line">		<span class="comment">// int强制转换为short：注意必须保证逻辑上真实大小本来就没有超过short范围，否则会发生数据溢出</span></span><br><span class="line">		<span class="keyword">short</span> result2 = (<span class="keyword">short</span>) (num4 + num6);</span><br><span class="line">		System.out.println(result2); <span class="comment">// 100</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="ASCII码"><a href="#ASCII码" class="headerlink" title="ASCII码"></a>ASCII码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">数字和字符的对照关系表（编码表）：</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">ASCII码表：American Standard Code for Information Interchange，美国信息交换标准代码。</span></span><br><span class="line"><span class="comment">Unicode码表：万国码。也是数字和符号的对照关系，开头0-127部分和ASCII完全一样，但是从128开始包含有更多字符。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">48 - '0'</span></span><br><span class="line"><span class="comment">65 - 'A'</span></span><br><span class="line"><span class="comment">97 - 'a'</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo03DataTypeChar</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">char</span> zifu1 = <span class="string">'1'</span>;</span><br><span class="line">		System.out.println(zifu1 + <span class="number">0</span>); <span class="comment">// 49</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">char</span> zifu2 = <span class="string">'A'</span>; <span class="comment">// 其实底层保存的是65数字</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">char</span> zifu3 = <span class="string">'c'</span>;</span><br><span class="line">		<span class="comment">// 左侧是int类型，右边是char类型，</span></span><br><span class="line">		<span class="comment">// char --&gt; int，确实是从小到大</span></span><br><span class="line">		<span class="comment">// 发生了自动类型转换</span></span><br><span class="line">		<span class="keyword">int</span> num = zifu3;</span><br><span class="line">		System.out.println(num); <span class="comment">// 99</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">char</span> zifu4 = <span class="string">'中'</span>; <span class="comment">// 正确写法</span></span><br><span class="line">		System.out.println(zifu4 + <span class="number">0</span>); <span class="comment">// 20013</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="加法的用法"><a href="#加法的用法" class="headerlink" title="加法的用法"></a>加法的用法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">四则运算当中的加号“+”有常见的三种用法：</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">1. 对于数值来说，那就是加法。</span></span><br><span class="line"><span class="comment">2. 对于字符char类型来说，在计算之前，char会被提升成为int，然后再计算。</span></span><br><span class="line"><span class="comment">char类型字符，和int类型数字，之间的对照关系表：ASCII、Unicode</span></span><br><span class="line"><span class="comment">3. 对于字符串String（首字母大写，并不是关键字）来说，加号代表字符串连接操作。</span></span><br><span class="line"><span class="comment">任何数据类型和字符串进行连接的时候，结果都会变成字符串</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo05Plus</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 字符串类型的变量基本使用</span></span><br><span class="line">		<span class="comment">// 数据类型 变量名称 = 数据值;</span></span><br><span class="line">		String str1 = <span class="string">"Hello"</span>;</span><br><span class="line">		System.out.println(str1); <span class="comment">// Hello</span></span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"Hello"</span> + <span class="string">"World"</span>); <span class="comment">// HelloWorld</span></span><br><span class="line">		</span><br><span class="line">		String str2 = <span class="string">"Java"</span>;</span><br><span class="line">		<span class="comment">// String + int --&gt; String</span></span><br><span class="line">		System.out.println(str2 + <span class="number">20</span>); <span class="comment">// Java20</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 优先级问题</span></span><br><span class="line">		<span class="comment">// String + int + int</span></span><br><span class="line">		<span class="comment">// String		+ int</span></span><br><span class="line">		<span class="comment">// String</span></span><br><span class="line">		System.out.println(str2 + <span class="number">20</span> + <span class="number">30</span>); <span class="comment">// Java2030</span></span><br><span class="line">		</span><br><span class="line">		System.out.println(str2 + (<span class="number">20</span> + <span class="number">30</span>)); <span class="comment">// Java50</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/11/19/algorithm-7/" rel="next" title="algorithm-7">
+                  <i class="fa fa-chevron-left"></i> algorithm-7
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#命令提示符（cmd-command-）"><span class="nav-number">1.</span> <span class="nav-text">命令提示符（cmd(command)）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java虚拟机–JVM"><span class="nav-number">3.</span> <span class="nav-text">Java虚拟机–JVM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JRE和JDK"><span class="nav-number">4.</span> <span class="nav-text">JRE和JDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境变量的设置"><span class="nav-number">5.</span> <span class="nav-text">环境变量的设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译与运行"><span class="nav-number">6.</span> <span class="nav-text">编译与运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常量类型"><span class="nav-number">7.</span> <span class="nav-text">常量类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据类型"><span class="nav-number">8.</span> <span class="nav-text">基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#注意变量的作用域"><span class="nav-number">8.0.0.1.</span> <span class="nav-text">注意变量的作用域</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型转换"><span class="nav-number">9.</span> <span class="nav-text">类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自动类型转换（隐式）"><span class="nav-number">9.0.1.</span> <span class="nav-text">自动类型转换（隐式）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强制类型转换（显式）"><span class="nav-number">10.</span> <span class="nav-text">强制类型转换（显式）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ASCII码"><span class="nav-number">11.</span> <span class="nav-text">ASCII码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#加法的用法"><span class="nav-number">11.0.1.</span> <span class="nav-text">加法的用法</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Eoogle"
+      src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3892820290,3110990494&fm=26&gp=0.jpg">
+  <p class="site-author-name" itemprop="name">Eoogle</p>
+  <div class="site-description" itemprop="description">As a layman</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/eoogle" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;eoogle" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/331295045@qq.com" title="E-Mail → 331295045@qq.com"><i class="fa fa-fw fa-qq"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Eoogle</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">23k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">28 分钟</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+</body>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</html>
