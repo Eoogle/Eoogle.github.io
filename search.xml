@@ -68,7 +68,7 @@
 <hr>
 <h2 id="编译与运行"><a href="#编译与运行" class="headerlink" title="编译与运行"></a>编译与运行</h2><p>javac编译.java文件生成.class文件</p>
 <p>java执行.class文件，但是命令不需要.class后缀</p>
-<p><img src="/imgs/java/compile.png" alt></p>
+<p><img src="/blog/imgs/java/compile.png" alt></p>
 <hr>
 <h2 id="常量类型"><a href="#常量类型" class="headerlink" title="常量类型"></a>常量类型</h2><p><img src="/blog/imgs/java/changliang.png" alt></p>
 <p><code>&quot;&quot;</code>能输出（空字符串能输出），<code>&#39;&#39;</code>不能输出（不能为空字符，加一个空格则正确）。</p>
@@ -563,6 +563,19 @@
       </tags>
   </entry>
   <entry>
+    <title>我的第一篇博客文章</title>
+    <url>/blog/2019/11/14/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[<p>这个是Eoogle的第一篇博客</p><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"hello world!"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>categories测试</category>
+        <category>categories test</category>
+      </categories>
+      <tags>
+        <tag>tags</tag>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>记录hexo安装和使用的步骤</title>
     <url>/blog/2019/11/14/%E8%AE%B0%E5%BD%95hexo%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%AD%A5%E9%AA%A4/</url>
     <content><![CDATA[<p>​        这是正式的第一篇文章，想用来介绍晚上使用hexo框架搭建这个博客的过程。</p><p>​        首先，你的电脑需要有git和nodejs这两个工具，可到各自的官网下载，下载完后在命令行下输入git、node、npm验证</p><a id="more"></a>
@@ -601,19 +614,6 @@
       </categories>
       <tags>
         <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我的第一篇博客文章</title>
-    <url>/blog/2019/11/14/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[<p>这个是Eoogle的第一篇博客</p><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"hello world!"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>categories测试</category>
-        <category>categories test</category>
-      </categories>
-      <tags>
-        <tag>tags</tag>
-        <tag>test</tag>
       </tags>
   </entry>
 </search>
