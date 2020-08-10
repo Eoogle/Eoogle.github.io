@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/tiger32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/tiger16.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/blog/lib/pace/pace-theme-minimal.min.css">
+  <script src="/blog/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="接口（Interface）接口的定义1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677package cn.itcast.day10.demo01;&#x2F;*在任何版">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零开始学java-4">
+<meta property="og:url" content="http:&#x2F;&#x2F;eoogle.gitee.io&#x2F;blog&#x2F;2019&#x2F;11&#x2F;26&#x2F;%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6java-4&#x2F;index.html">
+<meta property="og:site_name" content="欢迎来到Eoogle的博客">
+<meta property="og:description" content="接口（Interface）接口的定义1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677package cn.itcast.day10.demo01;&#x2F;*在任何版">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;eoogle.gitee.io&#x2F;blog&#x2F;imgs&#x2F;java&#x2F;zhuanxin.png">
+<meta property="og:updated_time" content="2019-11-29T03:53:56.545Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;eoogle.gitee.io&#x2F;blog&#x2F;imgs&#x2F;java&#x2F;zhuanxin.png">
+
+<link rel="canonical" href="http://eoogle.gitee.io/blog/2019/11/26/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6java-4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>从零开始学java-4 | 欢迎来到Eoogle的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">欢迎来到Eoogle的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://eoogle.gitee.io/blog/blog/2019/11/26/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6java-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3892820290,3110990494&fm=26&gp=0.jpg">
+      <meta itemprop="name" content="Eoogle">
+      <meta itemprop="description" content="As a layman">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="欢迎来到Eoogle的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          从零开始学java-4
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-26 21:30:26" itemprop="dateCreated datePublished" datetime="2019-11-26T21:30:26+08:00">2019-11-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-29 11:53:56" itemprop="dateModified" datetime="2019-11-29T11:53:56+08:00">2019-11-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/learn-java/" itemprop="url" rel="index">
+                    <span itemprop="name">learn java</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>9.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>11 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="接口（Interface）"><a href="#接口（Interface）" class="headerlink" title="接口（Interface）"></a>接口（Interface）</h2><h4 id="接口的定义"><a href="#接口的定义" class="headerlink" title="接口的定义"></a>接口的定义</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.itcast.day10.demo01;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">在任何版本的Java中，接口都能定义抽象方法。</span></span><br><span class="line"><span class="comment">格式：</span></span><br><span class="line"><span class="comment">public abstract 返回值类型 方法名称(参数列表);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">注意事项：</span></span><br><span class="line"><span class="comment">1. 接口当中的抽象方法，修饰符必须是两个固定的关键字：public abstract</span></span><br><span class="line"><span class="comment">2. 这两个关键字修饰符，可以选择性地省略。（今天刚学，所以不推荐。）</span></span><br><span class="line"><span class="comment">3. 方法的三要素，可以随意定义。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyInterfaceAbstract</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这是一个抽象方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">methodAbs1</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这也是抽象方法</span></span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">methodAbs2</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这也是抽象方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodAbs3</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这也是抽象方法</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">methodAbs4</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">接口就是多个类的公共规范。</span></span><br><span class="line"><span class="comment">接口是一种引用数据类型，最重要的内容就是其中的：抽象方法。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">如何定义一个接口的格式：</span></span><br><span class="line"><span class="comment">public interface 接口名称 &#123;</span></span><br><span class="line"><span class="comment">    // 接口内容</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">备注：换成了关键字interface之后，编译生成的字节码文件仍然是：.java --&gt; .class。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">如果是Java 7，那么接口中可以包含的内容有：</span></span><br><span class="line"><span class="comment">1. 常量</span></span><br><span class="line"><span class="comment">2. 抽象方法</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">如果是Java 8，还可以额外包含有：</span></span><br><span class="line"><span class="comment">3. 默认方法</span></span><br><span class="line"><span class="comment">4. 静态方法</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">如果是Java 9，还可以额外包含有：</span></span><br><span class="line"><span class="comment">5. 私有方法</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">接口使用步骤：</span></span><br><span class="line"><span class="comment">1. 接口不能直接使用，必须有一个“实现类”来“实现”该接口。</span></span><br><span class="line"><span class="comment">格式：</span></span><br><span class="line"><span class="comment">public class 实现类名称 implements 接口名称 &#123;</span></span><br><span class="line"><span class="comment">    // ...</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">2. 接口的实现类必须覆盖重写（实现）接口中所有的抽象方法。</span></span><br><span class="line"><span class="comment">实现：去掉abstract关键字，加上方法体大括号。</span></span><br><span class="line"><span class="comment">3. 创建实现类的对象，进行使用。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">注意事项：</span></span><br><span class="line"><span class="comment">如果实现类并没有覆盖重写接口中所有的抽象方法，那么这个实现类自己就必须是抽象类。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01Interface</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 错误写法！不能直接new接口对象使用。</span></span><br><span class="line"><span class="comment">//        MyInterfaceAbstract inter = new MyInterfaceAbstract();</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建实现类的对象使用</span></span><br><span class="line">        MyInterfaceAbstractImpl impl = <span class="keyword">new</span> MyInterfaceAbstractImpl();</span><br><span class="line">        impl.methodAbs1();</span><br><span class="line">        impl.methodAbs2();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><a id="more"></a>
+
+
+
+<h4 id="接口的默认方法"><a href="#接口的默认方法" class="headerlink" title="接口的默认方法"></a>接口的默认方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.itcast.day10.demo01;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">从Java 8开始，接口里允许定义默认方法。</span></span><br><span class="line"><span class="comment">格式：</span></span><br><span class="line"><span class="comment">public default 返回值类型 方法名称(参数列表) &#123;</span></span><br><span class="line"><span class="comment">    方法体</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">备注：接口当中的默认方法，可以解决接口升级的问题。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyInterfaceDefault</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 抽象方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">methodAbs</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 新添加了一个抽象方法</span></span><br><span class="line"><span class="comment">//    public abstract void methodAbs2();</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 新添加的方法，改成默认方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">default</span> <span class="keyword">void</span> <span class="title">methodDefault</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"这是新添加的默认方法"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> cn.itcast.day10.demo01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyInterfaceDefaultA</span> <span class="keyword">implements</span> <span class="title">MyInterfaceDefault</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodAbs</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"实现了抽象方法，AAA"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> cn.itcast.day10.demo01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyInterfaceDefaultB</span> <span class="keyword">implements</span> <span class="title">MyInterfaceDefault</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodAbs</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"实现了抽象方法，BBB"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodDefault</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">" 实现类B覆盖重写了接口的默认方法"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> cn.itcast.day10.demo01;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1. 接口的默认方法，可以通过接口实现类对象，直接调用。</span></span><br><span class="line"><span class="comment">2. 接口的默认方法，也可以被接口实现类进行覆盖重写。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02Interface</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 创建了实现类对象</span></span><br><span class="line">        MyInterfaceDefaultA a = <span class="keyword">new</span> MyInterfaceDefaultA();</span><br><span class="line">        a.methodAbs(); <span class="comment">// 调用抽象方法，实际运行的是右侧实现类。</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 调用默认方法，如果实现类当中没有，会向上找接口</span></span><br><span class="line">        a.methodDefault(); <span class="comment">// 这是新添加的默认方法</span></span><br><span class="line">        System.out.println(<span class="string">"=========="</span>);</span><br><span class="line"></span><br><span class="line">        MyInterfaceDefaultB b = <span class="keyword">new</span> MyInterfaceDefaultB();</span><br><span class="line">        b.methodAbs();</span><br><span class="line">        b.methodDefault(); <span class="comment">// 实现类B覆盖重写了接口的默认方法</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h4 id="接口的静态方法"><a href="#接口的静态方法" class="headerlink" title="接口的静态方法"></a>接口的静态方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.itcast.day10.demo01;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">从Java 8开始，接口当中允许定义静态方法。</span></span><br><span class="line"><span class="comment">格式：</span></span><br><span class="line"><span class="comment">public static 返回值类型 方法名称(参数列表) &#123;</span></span><br><span class="line"><span class="comment">    方法体</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">提示：就是将abstract或者default换成static即可，带上方法体。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyInterfaceStatic</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">methodStatic</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"这是接口的静态方法！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> cn.itcast.day10.demo01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyInterfaceStaticImpl</span> <span class="keyword">implements</span> <span class="title">MyInterfaceStatic</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> cn.itcast.day10.demo01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo04Interface</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        MyInterfacePrivateB.methodStatic1();</span><br><span class="line">        MyInterfacePrivateB.methodStatic2();</span><br><span class="line">        <span class="comment">// 错误写法！</span></span><br><span class="line"><span class="comment">//        MyInterfacePrivateB.methodStaticCommon();</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="接口的私有方法（java9才有）"><a href="#接口的私有方法（java9才有）" class="headerlink" title="接口的私有方法（java9才有）"></a>接口的私有方法（java9才有）</h4><h4 id="接口的成员变量"><a href="#接口的成员变量" class="headerlink" title="接口的成员变量"></a>接口的成员变量</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.itcast.day10.demo01;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">接口当中也可以定义“成员变量”，但是必须使用public static final三个关键字进行修饰。</span></span><br><span class="line"><span class="comment">从效果上看，这其实就是接口的【常量】。</span></span><br><span class="line"><span class="comment">格式：</span></span><br><span class="line"><span class="comment">public static final 数据类型 常量名称 = 数据值;</span></span><br><span class="line"><span class="comment">备注：</span></span><br><span class="line"><span class="comment">一旦使用final关键字进行修饰，说明不可改变。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">注意事项：</span></span><br><span class="line"><span class="comment">1. 接口当中的常量，可以省略public static final，注意：不写也照样是这样。</span></span><br><span class="line"><span class="comment">2. 接口当中的常量，必须进行赋值；不能不赋值。</span></span><br><span class="line"><span class="comment">3. 接口中常量的名称，使用完全大写的字母，用下划线进行分隔。（推荐命名规则）</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyInterfaceConst</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这其实就是一个常量，一旦赋值，不可以修改</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> NUM_OF_MY_CLASS = <span class="number">12</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="接口小结"><a href="#接口小结" class="headerlink" title="接口小结"></a>接口小结</h4><p>在Java 9+版本中，接口的内容可以有：</p>
+<ol>
+<li><p>成员变量其实是常量，格式：<br>[public] [static] [final] 数据类型 常量名称 = 数据值;<br>注意：<br> 常量必须进行赋值，而且一旦赋值不能改变。<br> 常量名称完全大写，用下划线进行分隔。</p>
+</li>
+<li><p>接口中最重要的就是抽象方法，格式：<br>[public] [abstract] 返回值类型 方法名称(参数列表);<br>注意：实现类必须覆盖重写接口所有的抽象方法，除非实现类是抽象类。</p>
+</li>
+<li><p>从Java 8开始，接口里允许定义默认方法，格式：<br>[public] default 返回值类型 方法名称(参数列表) { 方法体 }<br>注意：默认方法也可以被覆盖重写</p>
+</li>
+<li><p>从Java 8开始，接口里允许定义静态方法，格式：<br>[public] static 返回值类型 方法名称(参数列表) { 方法体 }<br>注意：应该通过接口名称进行调用，不能通过实现类对象调用接口静态方法</p>
+</li>
+<li><p>从Java 9开始，接口里允许定义私有很乏，格式：<br>普通私有方法：private 返回值类型 方法名称(参数列表) { 方法体 }<br>静态私有方法：private static 返回值类型 方法名称(参数列表) { 方法体 }<br>注意：private的方法只有接口自己才能调用，不能被实现类或别人使用。</p>
+</li>
+</ol>
+<h4 id="接口的注意事项"><a href="#接口的注意事项" class="headerlink" title="接口的注意事项"></a>接口的注意事项</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.itcast.day10.demo02;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">使用接口的时候，需要注意：</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">1. 接口是没有静态代码块或者构造方法的。</span></span><br><span class="line"><span class="comment">2. 一个类的直接父类是唯一的，但是一个类可以同时实现多个接口。</span></span><br><span class="line"><span class="comment">格式：</span></span><br><span class="line"><span class="comment">public class MyInterfaceImpl implements MyInterfaceA, MyInterfaceB &#123;</span></span><br><span class="line"><span class="comment">    // 覆盖重写所有抽象方法</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">3. 如果实现类所实现的多个接口当中，存在重复的抽象方法，那么只需要覆盖重写一次即可。</span></span><br><span class="line"><span class="comment">4. 如果实现类没有覆盖重写所有接口当中的所有抽象方法，那么实现类就必须是一个抽象类。</span></span><br><span class="line"><span class="comment">5. 如果实现类锁实现的多个接口当中，存在重复的默认方法，那么实现类一定要对冲突的默认方法进行覆盖重写。</span></span><br><span class="line"><span class="comment">6. 一个类如果直接父类当中的方法，和接口当中的默认方法产生了冲突，优先用父类当中的方法。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01Interface</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Zi zi = <span class="keyword">new</span> Zi();</span><br><span class="line">        zi.method();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.itcast.day10.demo04;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">代码当中体现多态性，其实就是一句话：父类引用指向子类对象。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">格式：</span></span><br><span class="line"><span class="comment">父类名称 对象名 = new 子类名称();</span></span><br><span class="line"><span class="comment">或者：</span></span><br><span class="line"><span class="comment">接口名称 对象名 = new 实现类名称();</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01Multi</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 使用多态的写法</span></span><br><span class="line">        <span class="comment">// 左侧父类的引用，指向了右侧子类的对象</span></span><br><span class="line">        Fu obj = <span class="keyword">new</span> Zi();</span><br><span class="line"></span><br><span class="line">        obj.method();</span><br><span class="line">        obj.methodFu();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：方法是new哪个调用哪个，成员变量则是看等号左边哪个是哪个，没有的话向上找。</p>
+<p>访问成员变量的两种方式：</p>
+<p>1.直接通过成员变量访问成员变量，看等号左边是谁，优先用谁，没有则向上找。</p>
+<p>2.间接通过成员方法访问成员变量，看该方法属于谁，优先用谁，没有则向上找。</p>
+<h4 id="对象的向上转型和向下转型"><a href="#对象的向上转型和向下转型" class="headerlink" title="对象的向上转型和向下转型"></a>对象的向上转型和向下转型</h4><p><img src="/blog/imgs/java/zhuanxin.png" alt></p>
+<h4 id="instanceof的使用"><a href="#instanceof的使用" class="headerlink" title="instanceof的使用"></a>instanceof的使用</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.itcast.day10.demo06;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">如何才能知道一个父类引用的对象，本来是什么子类？</span></span><br><span class="line"><span class="comment">格式：</span></span><br><span class="line"><span class="comment">对象 instanceof 类名称</span></span><br><span class="line"><span class="comment">这将会得到一个boolean值结果，也就是判断前面的对象能不能当做后面类型的实例。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02Instanceof</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Animal animal = <span class="keyword">new</span> Dog(); <span class="comment">// 本来是一只狗</span></span><br><span class="line">        animal.eat(); <span class="comment">// 狗吃SHIT</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果希望掉用子类特有方法，需要向下转型</span></span><br><span class="line">        <span class="comment">// 判断一下父类引用animal本来是不是Dog</span></span><br><span class="line">        <span class="keyword">if</span> (animal <span class="keyword">instanceof</span> Dog) &#123;</span><br><span class="line">            Dog dog = (Dog) animal;</span><br><span class="line">            dog.watchHouse();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 判断一下animal本来是不是Cat</span></span><br><span class="line">        <span class="keyword">if</span> (animal <span class="keyword">instanceof</span> Cat) &#123;</span><br><span class="line">            Cat cat = (Cat) animal;</span><br><span class="line">            cat.catchMouse();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        giveMeAPet(<span class="keyword">new</span> Dog());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">giveMeAPet</span><span class="params">(Animal animal)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (animal <span class="keyword">instanceof</span> Dog) &#123;</span><br><span class="line">            Dog dog = (Dog) animal;</span><br><span class="line">            dog.watchHouse();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (animal <span class="keyword">instanceof</span> Cat) &#123;</span><br><span class="line">            Cat cat = (Cat) animal;</span><br><span class="line">            cat.catchMouse();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="final的使用"><a href="#final的使用" class="headerlink" title="final的使用"></a>final的使用</h2><h2 id="4种权限修饰符"><a href="#4种权限修饰符" class="headerlink" title="4种权限修饰符"></a>4种权限修饰符</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Java中有四种权限修饰符： public  &gt;   protected   &gt;   (default)   &gt;   private</span><br><span class="line">同一个类（我自己）        YES         YES             YES             YES</span><br><span class="line">同一个包（我邻居）        YES         YES             YES             NO</span><br><span class="line">不同包子类（我儿子）       YES         YES             NO              NO</span><br><span class="line">不同包非子类（陌生人）      YES         NO              NO              NO</span><br><span class="line">注意事项：(default)并不是关键字“default”，而是根本不写。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="外部内中定义内部类"><a href="#外部内中定义内部类" class="headerlink" title="外部内中定义内部类"></a>外部内中定义内部类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.itcast.day11.demo03;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">如果一个事物的内部包含另一个事物，那么这就是一个类内部包含另一个类。</span></span><br><span class="line"><span class="comment">例如：身体和心脏的关系。又如：汽车和发动机的关系。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">分类：</span></span><br><span class="line"><span class="comment">1. 成员内部类</span></span><br><span class="line"><span class="comment">2. 局部内部类（包含匿名内部类）</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">成员内部类的定义格式：</span></span><br><span class="line"><span class="comment">修饰符 class 外部类名称 &#123;</span></span><br><span class="line"><span class="comment">    修饰符 class 内部类名称 &#123;</span></span><br><span class="line"><span class="comment">        // ...</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    // ...</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">注意：内用外，随意访问；外用内，需要内部类对象。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">==========================</span></span><br><span class="line"><span class="comment">如何使用成员内部类？有两种方式：</span></span><br><span class="line"><span class="comment">1. 间接方式：在外部类的方法当中，使用内部类；然后main只是调用外部类的方法。</span></span><br><span class="line"><span class="comment">2. 直接方式，公式：</span></span><br><span class="line"><span class="comment">类名称 对象名 = new 类名称();</span></span><br><span class="line"><span class="comment">【外部类名称.内部类名称 对象名 = new 外部类名称().new 内部类名称();】</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01InnerClass</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Body body = <span class="keyword">new</span> Body(); <span class="comment">// 外部类的对象</span></span><br><span class="line">        <span class="comment">// 通过外部类的对象，调用外部类的方法，里面间接在使用内部类Heart</span></span><br><span class="line">        body.methodBody();</span><br><span class="line">        System.out.println(<span class="string">"====================="</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 按照公式写：</span></span><br><span class="line">        Body.Heart heart = <span class="keyword">new</span> Body().<span class="keyword">new</span> Heart();</span><br><span class="line">        heart.beat();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="访问重名的外部类对象"><a href="#访问重名的外部类对象" class="headerlink" title="访问重名的外部类对象"></a>访问重名的外部类对象</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.itcast.day11.demo03;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果出现了重名现象，那么格式是：外部类名称.this.外部类成员变量名</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> num = <span class="number">10</span>; <span class="comment">// 外部类的成员变量</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> /*<span class="keyword">extends</span> <span class="title">Object</span>*/ </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">20</span>; <span class="comment">// 内部类的成员变量</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodInner</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> num = <span class="number">30</span>; <span class="comment">// 内部类方法的局部变量</span></span><br><span class="line">            System.out.println(num); <span class="comment">// 局部变量，就近原则</span></span><br><span class="line">            System.out.println(<span class="keyword">this</span>.num); <span class="comment">// 内部类的成员变量</span></span><br><span class="line">            System.out.println(Outer.<span class="keyword">this</span>.num); <span class="comment">// 外部类的成员变量</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="局部内部类访问局部变量"><a href="#局部内部类访问局部变量" class="headerlink" title="局部内部类访问局部变量"></a>局部内部类访问局部变量</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.itcast.day11.demo04;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">局部内部类，如果希望访问所在方法的局部变量，那么这个局部变量必须是【有效final的】。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">备注：从Java 8+开始，只要局部变量事实不变，那么final关键字可以省略。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">原因：</span></span><br><span class="line"><span class="comment">1. new出来的对象在堆内存当中。</span></span><br><span class="line"><span class="comment">2. 局部变量是跟着方法走的，在栈内存当中。</span></span><br><span class="line"><span class="comment">3. 方法运行结束之后，立刻出栈，局部变量就会立刻消失。</span></span><br><span class="line"><span class="comment">4. 但是new出来的对象会在堆当中持续存在，直到垃圾回收消失。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyOuter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodOuter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">10</span>; <span class="comment">// 所在方法的局部变量</span></span><br><span class="line"></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">MyInner</span> </span>&#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodInner</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(num);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.itcast.day11.demo05;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">如果接口的实现类（或者是父类的子类）只需要使用唯一的一次，</span></span><br><span class="line"><span class="comment">那么这种情况下就可以省略掉该类的定义，而改为使用【匿名内部类】。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">匿名内部类的定义格式：</span></span><br><span class="line"><span class="comment">接口名称 对象名 = new 接口名称() &#123;</span></span><br><span class="line"><span class="comment">    // 覆盖重写所有抽象方法</span></span><br><span class="line"><span class="comment">&#125;;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">对格式“new 接口名称() &#123;...&#125;”进行解析：</span></span><br><span class="line"><span class="comment">1. new代表创建对象的动作</span></span><br><span class="line"><span class="comment">2. 接口名称就是匿名内部类需要实现哪个接口</span></span><br><span class="line"><span class="comment">3. &#123;...&#125;这才是匿名内部类的内容</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">另外还要注意几点问题：</span></span><br><span class="line"><span class="comment">1. 匿名内部类，在【创建对象】的时候，只能使用唯一一次。</span></span><br><span class="line"><span class="comment">如果希望多次创建对象，而且类的内容一样的话，那么就需要使用单独定义的实现类了。</span></span><br><span class="line"><span class="comment">2. 匿名对象，在【调用方法】的时候，只能调用唯一一次。</span></span><br><span class="line"><span class="comment">如果希望同一个对象，调用多次方法，那么必须给对象起个名字。</span></span><br><span class="line"><span class="comment">3. 匿名内部类是省略了【实现类/子类名称】，但是匿名对象是省略了【对象名称】</span></span><br><span class="line"><span class="comment">强调：匿名内部类和匿名对象不是一回事！！！</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoMain</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        MyInterface obj = new MyInterfaceImpl();</span></span><br><span class="line"><span class="comment">//        obj.method();</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        MyInterface some = new MyInterface(); // 错误写法！</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 使用匿名内部类，但不是匿名对象，对象名称就叫objA</span></span><br><span class="line">        MyInterface objA = <span class="keyword">new</span> MyInterface() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"匿名内部类实现了方法！111-A"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"匿名内部类实现了方法！222-A"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        objA.method1();</span><br><span class="line">        objA.method2();</span><br><span class="line">        System.out.println(<span class="string">"================="</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 使用了匿名内部类，而且省略了对象名称，也是匿名对象</span></span><br><span class="line">        <span class="keyword">new</span> MyInterface() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"匿名内部类实现了方法！111-B"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"匿名内部类实现了方法！222-B"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;.method1();</span><br><span class="line">        <span class="comment">// 因为匿名对象无法调用第二次方法，所以需要再创建一个匿名内部类的匿名对象</span></span><br><span class="line">        <span class="keyword">new</span> MyInterface() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"匿名内部类实现了方法！111-B"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"匿名内部类实现了方法！222-B"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;.method2();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/blog/2019/11/24/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6java-3/" rel="next" title="从零开始学java-3">
+                  <i class="fa fa-chevron-left"></i> 从零开始学java-3
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/blog/2019/11/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6java-5/" rel="prev" title="从零开始学java-5">
+                  从零开始学java-5 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#接口（Interface）"><span class="nav-number">1.</span> <span class="nav-text">接口（Interface）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接口的定义"><span class="nav-number">1.0.1.</span> <span class="nav-text">接口的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口的默认方法"><span class="nav-number">1.0.2.</span> <span class="nav-text">接口的默认方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口的静态方法"><span class="nav-number">1.0.3.</span> <span class="nav-text">接口的静态方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口的私有方法（java9才有）"><span class="nav-number">1.0.4.</span> <span class="nav-text">接口的私有方法（java9才有）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口的成员变量"><span class="nav-number">1.0.5.</span> <span class="nav-text">接口的成员变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口小结"><span class="nav-number">1.0.6.</span> <span class="nav-text">接口小结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口的注意事项"><span class="nav-number">1.0.7.</span> <span class="nav-text">接口的注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多态"><span class="nav-number">2.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象的向上转型和向下转型"><span class="nav-number">2.0.1.</span> <span class="nav-text">对象的向上转型和向下转型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#instanceof的使用"><span class="nav-number">2.0.2.</span> <span class="nav-text">instanceof的使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final的使用"><span class="nav-number">3.</span> <span class="nav-text">final的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4种权限修饰符"><span class="nav-number">4.</span> <span class="nav-text">4种权限修饰符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外部内中定义内部类"><span class="nav-number">5.</span> <span class="nav-text">外部内中定义内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#访问重名的外部类对象"><span class="nav-number">5.0.1.</span> <span class="nav-text">访问重名的外部类对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#局部内部类访问局部变量"><span class="nav-number">5.0.2.</span> <span class="nav-text">局部内部类访问局部变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名内部类"><span class="nav-number">5.1.</span> <span class="nav-text">匿名内部类</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Eoogle"
+      src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3892820290,3110990494&fm=26&gp=0.jpg">
+  <p class="site-author-name" itemprop="name">Eoogle</p>
+  <div class="site-description" itemprop="description">As a layman</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/eoogle" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;eoogle" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/blog/331295045@qq.com" title="E-Mail → 331295045@qq.com"><i class="fa fa-fw fa-qq"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Eoogle</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">54k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:08</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+<script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script>
+<script src="/blog/js/schemes/pisces.js"></script>
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+</body>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</html>
