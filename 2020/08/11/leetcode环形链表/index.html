@@ -52,23 +52,22 @@
   };
 </script>
 
-  <meta name="description" content="​        这是正式的第一篇文章，想用来介绍晚上使用hexo框架搭建这个博客的过程。​        首先，你的电脑需要有git和nodejs这两个工具，可到各自的官网下载，下载完后在命令行下输入git、node、npm验证">
-<meta name="keywords" content="hexo">
+  <meta name="description" content="思路1：利用哈希表存储访问过的节点，如若访问到哈希表已有的节点说明有环，如若指针指向空，循环结束，说明无环。空间复杂度为O(n).">
+<meta name="keywords" content="环形链表 快慢指针">
 <meta property="og:type" content="article">
-<meta property="og:title" content="记录hexo安装和使用的步骤">
-<meta property="og:url" content="http:&#x2F;&#x2F;eoogle.gitee.io&#x2F;blog&#x2F;2019&#x2F;11&#x2F;14&#x2F;%E8%AE%B0%E5%BD%95hexo%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%AD%A5%E9%AA%A4&#x2F;index.html">
+<meta property="og:title" content="leetcode环形链表">
+<meta property="og:url" content="http:&#x2F;&#x2F;eoogle.gitee.io&#x2F;blog&#x2F;2020&#x2F;08&#x2F;11&#x2F;leetcode%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8&#x2F;index.html">
 <meta property="og:site_name" content="欢迎来到Eoogle的博客">
-<meta property="og:description" content="​        这是正式的第一篇文章，想用来介绍晚上使用hexo框架搭建这个博客的过程。​        首先，你的电脑需要有git和nodejs这两个工具，可到各自的官网下载，下载完后在命令行下输入git、node、npm验证">
+<meta property="og:description" content="思路1：利用哈希表存储访问过的节点，如若访问到哈希表已有的节点说明有环，如若指针指向空，循环结束，说明无环。空间复杂度为O(n).">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;eoogle.gitee.io&#x2F;blog&#x2F;imgs&#x2F;first&#x2F;git.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;eoogle.gitee.io&#x2F;blog&#x2F;imgs&#x2F;first&#x2F;node.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;eoogle.gitee.io&#x2F;blog&#x2F;imgs&#x2F;first&#x2F;npm.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;eoogle.gitee.io&#x2F;blog&#x2F;imgs&#x2F;first&#x2F;c_d.png">
-<meta property="og:updated_time" content="2019-11-23T10:06:41.242Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;eoogle.gitee.io&#x2F;blog&#x2F;imgs&#x2F;leetcode&#x2F;1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;eoogle.gitee.io&#x2F;blog&#x2F;imgs&#x2F;leetcode&#x2F;2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;eoogle.gitee.io&#x2F;blog&#x2F;imgs&#x2F;leetcode&#x2F;3.png">
+<meta property="og:updated_time" content="2020-08-11T02:55:34.453Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;eoogle.gitee.io&#x2F;blog&#x2F;imgs&#x2F;first&#x2F;git.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;eoogle.gitee.io&#x2F;blog&#x2F;imgs&#x2F;leetcode&#x2F;1.png">
 
-<link rel="canonical" href="http://eoogle.gitee.io/blog/2019/11/14/%E8%AE%B0%E5%BD%95hexo%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%AD%A5%E9%AA%A4/">
+<link rel="canonical" href="http://eoogle.gitee.io/blog/2020/08/11/leetcode%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/">
 
 
 <script id="page-configurations">
@@ -82,7 +81,7 @@
   };
 </script>
 
-  <title>记录hexo安装和使用的步骤 | 欢迎来到Eoogle的博客</title>
+  <title>leetcode环形链表 | 欢迎来到Eoogle的博客</title>
   
 
 
@@ -216,7 +215,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://eoogle.gitee.io/blog/blog/2019/11/14/%E8%AE%B0%E5%BD%95hexo%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%AD%A5%E9%AA%A4/">
+    <link itemprop="mainEntityOfPage" href="http://eoogle.gitee.io/blog/blog/2020/08/11/leetcode%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3892820290,3110990494&fm=26&gp=0.jpg">
@@ -229,7 +228,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          记录hexo安装和使用的步骤
+          leetcode环形链表
         </h1>
 
         <div class="post-meta">
@@ -238,24 +237,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-11-14 16:56:14" itemprop="dateCreated datePublished" datetime="2019-11-14T16:56:14+08:00">2019-11-14</time>
+              <time title="创建时间：2020-08-11 10:29:10 / 修改时间：10:55:34" itemprop="dateCreated datePublished" datetime="2020-08-11T10:29:10+08:00">2020-08-11</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-23 18:06:41" itemprop="dateModified" datetime="2019-11-23T18:06:41+08:00">2019-11-23</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/hexo%E5%AD%A6%E4%B9%A0%E4%B8%8E%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo学习与使用</span>
+                  <a href="/blog/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
                   </a>
                 </span>
             </span>
@@ -266,14 +259,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>459</span>
+              <span>1.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -285,35 +278,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>​        这是正式的第一篇文章，想用来介绍晚上使用hexo框架搭建这个博客的过程。</p><p>​        首先，你的电脑需要有git和nodejs这两个工具，可到各自的官网下载，下载完后在命令行下输入git、node、npm验证</p><a id="more"></a>
+        <p><img src="/blog/imgs/leetcode/1.png" alt></p><p>思路1：利用哈希表存储访问过的节点，如若访问到哈希表已有的节点说明有环，如若指针指向空，循环结束，说明无环。空间复杂度为O(n).</p><a id="more"></a>
 
-<p><img src="/blog/imgs/first/git.png" alt></p>
-<p><img src="/blog/imgs/first/node.png" alt></p>
-<p><img src="/blog/imgs/first/npm.png" alt></p>
-<p>​        安装完后新建一个博客的目录文件，在我这里为D:/code/blog，</p>
-<p>通过命令行跳转到该项目，注意由C盘到D盘的命令为D:  ，而不是cd d:  ,或其他。</p>
-<p><img src="/blog/imgs/first/c_d.png" alt></p>
-<p>​        然后通过</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        HashSet&lt;ListNode&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        ListNode cur = head;</span><br><span class="line">        <span class="keyword">while</span>(cur != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(set.contains(cur))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            set.add(cur);</span><br><span class="line">            cur = cur.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>​        初始化改目录，使其成为一个hexo博客文件夹。</p>
-<p>​        接着通过</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n test</span><br></pre></td></tr></table></figure>
+<p>思路2：利用快慢指针同时移动，如若在某一时刻快慢指针相等，说明有环，如若快指针指向空，说明无环。空间复杂度为O(1).</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        ListNode slow = head,fast = head.next;</span><br><span class="line">        <span class="keyword">while</span>(slow!=<span class="keyword">null</span>&amp;&amp;fast.next!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(fast == slow)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>创建一篇名为test的新文章。此时会在blog/source/_posts目录下新建test.md文件，即为该文章的源文件。</p>
-<p>​        编写好文章内容后，通过</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+<p><img src="/blog/imgs/leetcode/2.png" alt></p>
+<p>思路1：同上依然可以使用哈希表存储。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">detectCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        HashSet&lt;ListNode&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        ListNode cur = head;</span><br><span class="line">        <span class="keyword">while</span>(cur != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(set.contains(cur))</span><br><span class="line">                <span class="keyword">return</span> cur;</span><br><span class="line">            set.add(cur);</span><br><span class="line">            cur = cur.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>清理文件夹内容，然后通过</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-
-<p>生成文章在hexo的可展示的文件，在blog/public/2019的文件夹下。</p>
-<p>最后通过</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>启动服务器。这样在localhost:4000下就能访问到博客的主页了（默认端口是4000，如不可访问可能是其他端口冲突）。</p>
-<p>部署到github的命令为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>思路2：利用快慢指针但是需要一些推理。</p>
+<p>首先，可以确定快慢指针相遇肯定在环中，设头结点到环入口的长度为a，此时设慢指针走过的路程为x，那么快指针走过的路程为2x，环的长度为b，那么有<code>2x-x = k*b</code>，其中k为大于等于1的正整数，即存在<code>x = k*b</code>，意思是慢指针走过的路程一定是环长度的整数倍，让此时的慢指针再走a距离，此时有<code>x+a = k*b+a</code>，可知此时的慢指针一定指向环的入口。</p>
+<p><img src="/blog/imgs/leetcode/3.png" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">detectCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode slow = head,fast = head;</span><br><span class="line">        <span class="keyword">while</span>(fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            <span class="keyword">if</span>(fast == slow)&#123;</span><br><span class="line">                ListNode tmp = slow;</span><br><span class="line">                ListNode q = head;</span><br><span class="line">                <span class="keyword">while</span>(q!=tmp)&#123;</span><br><span class="line">                    q = q.next;</span><br><span class="line">                    tmp = tmp.next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> q;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -324,24 +303,21 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/blog/tags/hexo/" rel="tag"> <i class="fa fa-tag"></i> hexo</a>
+              <a href="/blog/tags/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" rel="tag"> <i class="fa fa-tag"></i> 环形链表 快慢指针</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/blog/2019/11/14/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" rel="next" title="我的第一篇博客文章">
-                  <i class="fa fa-chevron-left"></i> 我的第一篇博客文章
+                <a href="/blog/2020/08/10/newBlog/" rel="next" title="newBlog">
+                  <i class="fa fa-chevron-left"></i> newBlog
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/blog/2019/11/15/test-markdown/" rel="prev" title="test_markdown">
-                  test_markdown <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
