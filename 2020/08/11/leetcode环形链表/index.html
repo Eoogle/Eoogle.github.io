@@ -60,12 +60,12 @@
 <meta property="og:site_name" content="欢迎来到Eoogle的博客">
 <meta property="og:description" content="思路1：利用哈希表存储访问过的节点，如若访问到哈希表已有的节点说明有环，如若指针指向空，循环结束，说明无环。空间复杂度为O(n).">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https:&#x2F;&#x2F;eoogle.github.io&#x2F;blog&#x2F;imgs&#x2F;leetcode&#x2F;1.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;eoogle.github.io&#x2F;blog&#x2F;imgs&#x2F;leetcode&#x2F;2.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;eoogle.github.io&#x2F;blog&#x2F;imgs&#x2F;leetcode&#x2F;3.png">
-<meta property="og:updated_time" content="2020-08-11T02:55:34.453Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;eoogle.github.io&#x2F;imgs&#x2F;leetcode&#x2F;1.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;eoogle.github.io&#x2F;imgs&#x2F;leetcode&#x2F;2.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;eoogle.github.io&#x2F;imgs&#x2F;leetcode&#x2F;3.png">
+<meta property="og:updated_time" content="2020-08-12T07:23:53.983Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;eoogle.github.io&#x2F;blog&#x2F;imgs&#x2F;leetcode&#x2F;1.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;eoogle.github.io&#x2F;imgs&#x2F;leetcode&#x2F;1.png">
 
 <link rel="canonical" href="https://eoogle.github.io/2020/08/11/leetcode%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/">
 
@@ -237,10 +237,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-08-11 10:29:10 / 修改时间：10:55:34" itemprop="dateCreated datePublished" datetime="2020-08-11T10:29:10+08:00">2020-08-11</time>
+              <time title="创建时间：2020-08-11 10:29:10" itemprop="dateCreated datePublished" datetime="2020-08-11T10:29:10+08:00">2020-08-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-12 15:23:53" itemprop="dateModified" datetime="2020-08-12T15:23:53+08:00">2020-08-12</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -278,20 +284,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="/blog/imgs/leetcode/1.png" alt></p><p>思路1：利用哈希表存储访问过的节点，如若访问到哈希表已有的节点说明有环，如若指针指向空，循环结束，说明无环。空间复杂度为O(n).</p><a id="more"></a>
+        <p><img src="/imgs/leetcode/1.png" alt></p><p>思路1：利用哈希表存储访问过的节点，如若访问到哈希表已有的节点说明有环，如若指针指向空，循环结束，说明无环。空间复杂度为O(n).</p><a id="more"></a>
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        HashSet&lt;ListNode&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        ListNode cur = head;</span><br><span class="line">        <span class="keyword">while</span>(cur != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(set.contains(cur))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            set.add(cur);</span><br><span class="line">            cur = cur.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>思路2：利用快慢指针同时移动，如若在某一时刻快慢指针相等，说明有环，如若快指针指向空，说明无环。空间复杂度为O(1).</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        ListNode slow = head,fast = head.next;</span><br><span class="line">        <span class="keyword">while</span>(slow!=<span class="keyword">null</span>&amp;&amp;fast.next!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(fast == slow)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/blog/imgs/leetcode/2.png" alt></p>
+<p><img src="/imgs/leetcode/2.png" alt></p>
 <p>思路1：同上依然可以使用哈希表存储。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">detectCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        HashSet&lt;ListNode&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        ListNode cur = head;</span><br><span class="line">        <span class="keyword">while</span>(cur != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(set.contains(cur))</span><br><span class="line">                <span class="keyword">return</span> cur;</span><br><span class="line">            set.add(cur);</span><br><span class="line">            cur = cur.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>思路2：利用快慢指针但是需要一些推理。</p>
 <p>首先，可以确定快慢指针相遇肯定在环中，设头结点到环入口的长度为a，此时设慢指针走过的路程为x，那么快指针走过的路程为2x，环的长度为b，那么有<code>2x-x = k*b</code>，其中k为大于等于1的正整数，即存在<code>x = k*b</code>，意思是慢指针走过的路程一定是环长度的整数倍，让此时的慢指针再走a距离，此时有<code>x+a = k*b+a</code>，可知此时的慢指针一定指向环的入口。</p>
-<p><img src="/blog/imgs/leetcode/3.png" alt></p>
+<p><img src="/imgs/leetcode/3.png" alt></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">detectCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode slow = head,fast = head;</span><br><span class="line">        <span class="keyword">while</span>(fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            <span class="keyword">if</span>(fast == slow)&#123;</span><br><span class="line">                ListNode tmp = slow;</span><br><span class="line">                ListNode q = head;</span><br><span class="line">                <span class="keyword">while</span>(q!=tmp)&#123;</span><br><span class="line">                    q = q.next;</span><br><span class="line">                    tmp = tmp.next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> q;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -310,8 +316,8 @@
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2020/08/10/newBlog/" rel="next" title="newBlog">
-                  <i class="fa fa-chevron-left"></i> newBlog
+                <a href="/2019/12/02/java-%E5%BC%82%E5%B8%B8/" rel="next" title="java-异常">
+                  <i class="fa fa-chevron-left"></i> java-异常
                 </a>
             </div>
 
@@ -371,7 +377,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
