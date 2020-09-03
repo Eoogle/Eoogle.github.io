@@ -52,17 +52,21 @@
   };
 </script>
 
-  <meta name="description" content="Object类1.Object类介绍Object类是所有类的的父类。一个类都会直接或者间接的继承自该类。">
+  <meta name="description" content="思路：先复制链表的头结点，将头结点和新节点放入map中，后续节点的随机节点如若指向该节点即可直接找到，递归的复制头结点的下一个节点以及随机节点。">
+<meta name="keywords" content="map 递归">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从零开始学java-5">
-<meta property="og:url" content="https:&#x2F;&#x2F;eoogle.github.io&#x2F;2019&#x2F;11&#x2F;29&#x2F;%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6java-5&#x2F;index.html">
+<meta property="og:title" content="深拷贝链表和图">
+<meta property="og:url" content="https:&#x2F;&#x2F;eoogle.github.io&#x2F;2020&#x2F;08&#x2F;12&#x2F;photo&#x2F;index.html">
 <meta property="og:site_name" content="欢迎来到Eoogle的博客">
-<meta property="og:description" content="Object类1.Object类介绍Object类是所有类的的父类。一个类都会直接或者间接的继承自该类。">
+<meta property="og:description" content="思路：先复制链表的头结点，将头结点和新节点放入map中，后续节点的随机节点如若指向该节点即可直接找到，递归的复制头结点的下一个节点以及随机节点。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-29T16:16:07.938Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;eoogle.github.io&#x2F;2020&#x2F;08&#x2F;12&#x2F;photo&#x2F;linkedlist.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;eoogle.github.io&#x2F;2020&#x2F;08&#x2F;12&#x2F;photo&#x2F;graph.png">
+<meta property="og:updated_time" content="2020-08-12T08:20:34.568Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;eoogle.github.io&#x2F;2020&#x2F;08&#x2F;12&#x2F;photo&#x2F;linkedlist.png">
 
-<link rel="canonical" href="https://eoogle.github.io/2019/11/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6java-5/">
+<link rel="canonical" href="https://eoogle.github.io/2020/08/12/photo/">
 
 
 <script id="page-configurations">
@@ -76,7 +80,7 @@
   };
 </script>
 
-  <title>从零开始学java-5 | 欢迎来到Eoogle的博客</title>
+  <title>深拷贝链表和图 | 欢迎来到Eoogle的博客</title>
   
 
 
@@ -210,7 +214,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://Eoogle.github.io/2019/11/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6java-5/">
+    <link itemprop="mainEntityOfPage" href="https://Eoogle.github.io/2020/08/12/photo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3892820290,3110990494&fm=26&gp=0.jpg">
@@ -223,7 +227,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          从零开始学java-5
+          深拷贝链表和图
         </h1>
 
         <div class="post-meta">
@@ -232,24 +236,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-11-29 11:55:08" itemprop="dateCreated datePublished" datetime="2019-11-29T11:55:08+08:00">2019-11-29</time>
+              <time title="创建时间：2020-08-12 16:14:02 / 修改时间：16:20:34" itemprop="dateCreated datePublished" datetime="2020-08-12T16:14:02+08:00">2020-08-12</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-30 00:16:07" itemprop="dateModified" datetime="2019-11-30T00:16:07+08:00">2019-11-30</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/learn-java/" itemprop="url" rel="index">
-                    <span itemprop="name">learn java</span>
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
                   </a>
                 </span>
             </span>
@@ -260,14 +258,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
+              <span>857</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -279,60 +277,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h2><h4 id="1-Object类介绍"><a href="#1-Object类介绍" class="headerlink" title="1.Object类介绍"></a>1.Object类介绍</h4><p>Object类是所有类的的父类。一个类都会直接或者间接的继承自该类。</p><a id="more"></a>
-<p>该类中提供了一些非常常用的方法。</p>
-<h4 id="2-toString-方法"><a href="#2-toString-方法" class="headerlink" title="2.toString()方法"></a>2.toString()方法</h4><p>A:作用：带引对象的信息</p>
-<p>B:重写前：打印的是包名类名@地址值</p>
-<p>C:重写后：打印的是对象中的属性值</p>
-<h4 id="3-equals-方法"><a href="#3-equals-方法" class="headerlink" title="3.equals()方法"></a>3.equals()方法</h4><p>A:作用：比较两个对象</p>
-<p>B:重写前：比较的是对象的地址值</p>
-<p>C重写后：比较的是对象中的属性值</p>
-<h2 id="日期相关类"><a href="#日期相关类" class="headerlink" title="日期相关类"></a>日期相关类</h2><h4 id="1-Date类"><a href="#1-Date类" class="headerlink" title="1.Date类"></a>1.Date类</h4><p>  A.构造方法</p>
-<p>​    Date();根据当前系统时间创建日期对象</p>
-<p>​    Date(long time);根据传入的毫秒值时间创建日期对象</p>
-<p>B.成员方法</p>
-<p>​    long getTime(); 获取当前日期对象的毫秒值时间</p>
-<p>​    String toLocaleString();根据本地格式转换日期对象</p>
-<h4 id="2-DateFormat类-amp-SimpleDateFormat类"><a href="#2-DateFormat类-amp-SimpleDateFormat类" class="headerlink" title="2.DateFormat类&amp;SimpleDateFormat类"></a>2.DateFormat类&amp;SimpleDateFormat类</h4><p>A.构造方法</p>
-<p>​    SimpleDateFormat(String s);根据指定模板穿件日期格式化对象</p>
-<p>B.成员方法</p>
-<p>​    String format(Date d); 根据指定格式格式化日期对象</p>
-<p>​    Data parse(String s); 根据指定格式解析字符串</p>
-<h4 id="3-Calendar类"><a href="#3-Calendar类" class="headerlink" title="3.Calendar类"></a>3.Calendar类</h4><p>A.创建对象方式</p>
-<p>​    Calendar c = Calendar.newInstance(); 获取日历类对象</p>
-<p>B.成员方法</p>
-<p>​    int get(int n); 获取指定日历字段信息</p>
-<p>​    void set(int n,int value); 将制定日历字段设置为指定的值</p>
-<p>​    void add(int n,int value); 将制定日历字段增加或者减少指定的值</p>
-<h2 id="Syetem类"><a href="#Syetem类" class="headerlink" title="Syetem类"></a>Syetem类</h2><h4 id="1-currentTimeMills-方法"><a href="#1-currentTimeMills-方法" class="headerlink" title="1.currentTimeMills()方法"></a>1.currentTimeMills()方法</h4><p>​    作用：获取当前系统毫秒值时间</p>
-<h4 id="2-arraycopy-方法"><a href="#2-arraycopy-方法" class="headerlink" title="2.arraycopy()方法"></a>2.arraycopy()方法</h4><p>​    作用：复制数组</p>
-<h2 id="StringBuilder类"><a href="#StringBuilder类" class="headerlink" title="StringBuilder类"></a>StringBuilder类</h2><h4 id="1-构造方法"><a href="#1-构造方法" class="headerlink" title="1.构造方法"></a>1.构造方法</h4><p>​    StringBuilder(); 创建一个空的字符串缓冲区对象</p>
-<p>​    StringBuilder(String s); 根据传入的内容创建一个字符串缓冲区对象</p>
-<h4 id="2-成员方法"><a href="#2-成员方法" class="headerlink" title="2.成员方法"></a>2.成员方法</h4><p>​    StringBuilder append(Object obj); 添加内容</p>
-<p>​    StringBuilder reverse();反转内容</p>
-<p>​    String toString(); 将缓存区内容转为字符串</p>
-<h2 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h2><h4 id="1-基本数据-类型对应的包装类"><a href="#1-基本数据-类型对应的包装类" class="headerlink" title="1.基本数据 类型对应的包装类"></a>1.基本数据 类型对应的包装类</h4><p>​    byte                Byte</p>
-<p>​    short              Short</p>
-<p>​    int                  Integer</p>
-<p>​    char               Character</p>
-<p>​    double          Double    </p>
-<p>​    float                Float</p>
-<p>​    long                 Long</p>
-<p>​    boolean        Boolean</p>
-<p>​    </p>
-<h4 id="2-数字转为字符串"><a href="#2-数字转为字符串" class="headerlink" title="2.数字转为字符串"></a>2.数字转为字符串</h4><ol>
-<li><p>值+“””    最简单的方式</p>
-</li>
-<li><p>Integer中的静态方法     static String toStirng(int i )   返回一个表示指定整数的String对象 </p>
-</li>
-<li><p>String类中的静态方法    static String valueOf(int i )返回int阐述的字符串表示形式。</p>
-<p>​     </p>
-</li>
-</ol>
-<h4 id="3-字符串转为数字"><a href="#3-字符串转为数字" class="headerlink" title="3.字符串转为数字"></a>3.字符串转为数字</h4><p>使用包装类中的parseXX(String s)方法</p>
-<p>​        Integer类： static int parseInt(String s)</p>
-<p>​        Double类：static double parseDouble(String s)</p>
-<h4 id="4-自动拆装箱"><a href="#4-自动拆装箱" class="headerlink" title="4.自动拆装箱"></a>4.自动拆装箱</h4>
+        <p><img src="/2020/08/12/photo/linkedlist.png" alt></p><p>思路：先复制链表的头结点，将头结点和新节点放入map中，后续节点的随机节点如若指向该节点即可直接找到，递归的复制头结点的下一个节点以及随机节点。</p><a id="more"></a>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> HashMap&lt;Node,Node&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">//克隆以head为头结点的链表返回新链表的头结点</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Node <span class="title">copyRandomList</span><span class="params">(Node head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(head))</span><br><span class="line">            <span class="keyword">return</span> map.get(head);</span><br><span class="line">        Node tmp = <span class="keyword">new</span> Node(head.val);<span class="comment">//复制一份头结点</span></span><br><span class="line">        map.put(head,tmp);<span class="comment">// 【老节点，新节点】</span></span><br><span class="line">        tmp.next = copyRandomList(head.next);</span><br><span class="line">        tmp.random = copyRandomList(head.random);</span><br><span class="line">        <span class="keyword">return</span> tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/08/12/photo/graph.png" alt></p>
+<p>思路：同链表类似，链表的头结点和随机节点=&gt;图的相邻节点</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Map&lt;Node,Node&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Node <span class="title">cloneGraph</span><span class="params">(Node node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(node == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(node))</span><br><span class="line">            <span class="keyword">return</span> map.get(node);</span><br><span class="line">        Node tmp = <span class="keyword">new</span> Node(node.val,<span class="keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line">        map.put(node,tmp);</span><br><span class="line">        <span class="keyword">for</span>(Node n:node.neighbors)&#123;</span><br><span class="line">            tmp.neighbors.add(cloneGraph(n));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
     </div>
 
     
@@ -340,22 +293,22 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/map-%E9%80%92%E5%BD%92/" rel="tag"> <i class="fa fa-tag"></i> map 递归</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2019/11/26/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6java-4/" rel="next" title="从零开始学java-4">
-                  <i class="fa fa-chevron-left"></i> 从零开始学java-4
+                <a href="/2020/08/12/leetcode/" rel="next" title="leetcode深拷贝链表和图">
+                  <i class="fa fa-chevron-left"></i> leetcode深拷贝链表和图
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2020/08/11/leetcode%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" rel="prev" title="leetcode环形链表">
-                  leetcode环形链表 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
@@ -394,7 +347,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Object类"><span class="nav-number">1.</span> <span class="nav-text">Object类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Object类介绍"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.Object类介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-toString-方法"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.toString()方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-equals-方法"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.equals()方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期相关类"><span class="nav-number">2.</span> <span class="nav-text">日期相关类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Date类"><span class="nav-number">2.0.1.</span> <span class="nav-text">1.Date类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-DateFormat类-amp-SimpleDateFormat类"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.DateFormat类&amp;SimpleDateFormat类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Calendar类"><span class="nav-number">2.0.3.</span> <span class="nav-text">3.Calendar类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Syetem类"><span class="nav-number">3.</span> <span class="nav-text">Syetem类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-currentTimeMills-方法"><span class="nav-number">3.0.1.</span> <span class="nav-text">1.currentTimeMills()方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-arraycopy-方法"><span class="nav-number">3.0.2.</span> <span class="nav-text">2.arraycopy()方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StringBuilder类"><span class="nav-number">4.</span> <span class="nav-text">StringBuilder类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-构造方法"><span class="nav-number">4.0.1.</span> <span class="nav-text">1.构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-成员方法"><span class="nav-number">4.0.2.</span> <span class="nav-text">2.成员方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包装类"><span class="nav-number">5.</span> <span class="nav-text">包装类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-基本数据-类型对应的包装类"><span class="nav-number">5.0.1.</span> <span class="nav-text">1.基本数据 类型对应的包装类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-数字转为字符串"><span class="nav-number">5.0.2.</span> <span class="nav-text">2.数字转为字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-字符串转为数字"><span class="nav-number">5.0.3.</span> <span class="nav-text">3.字符串转为数字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-自动拆装箱"><span class="nav-number">5.0.4.</span> <span class="nav-text">4.自动拆装箱</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>深拷贝链表和图</title>
+    <url>/2020/08/12/photo/</url>
+    <content><![CDATA[<p><img src="/2020/08/12/photo/linkedlist.png" alt></p><p>思路：先复制链表的头结点，将头结点和新节点放入map中，后续节点的随机节点如若指向该节点即可直接找到，递归的复制头结点的下一个节点以及随机节点。</p><a id="more"></a>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> HashMap&lt;Node,Node&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">//克隆以head为头结点的链表返回新链表的头结点</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Node <span class="title">copyRandomList</span><span class="params">(Node head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(head))</span><br><span class="line">            <span class="keyword">return</span> map.get(head);</span><br><span class="line">        Node tmp = <span class="keyword">new</span> Node(head.val);<span class="comment">//复制一份头结点</span></span><br><span class="line">        map.put(head,tmp);<span class="comment">// 【老节点，新节点】</span></span><br><span class="line">        tmp.next = copyRandomList(head.next);</span><br><span class="line">        tmp.random = copyRandomList(head.random);</span><br><span class="line">        <span class="keyword">return</span> tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/08/12/photo/graph.png" alt></p>
+<p>思路：同链表类似，链表的头结点和随机节点=&gt;图的相邻节点</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Map&lt;Node,Node&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Node <span class="title">cloneGraph</span><span class="params">(Node node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(node == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(node))</span><br><span class="line">            <span class="keyword">return</span> map.get(node);</span><br><span class="line">        Node tmp = <span class="keyword">new</span> Node(node.val,<span class="keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line">        map.put(node,tmp);</span><br><span class="line">        <span class="keyword">for</span>(Node n:node.neighbors)&#123;</span><br><span class="line">            tmp.neighbors.add(cloneGraph(n));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>map 递归</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode深拷贝链表和图</title>
+    <url>/2020/08/12/leetcode/</url>
+    <content><![CDATA[<p><img src="/2020/08/12/leetcode/linkedlist.jpg" alt></p><p>思路：利用map存储已经访问过的节点，递归的复制头结点以及其后续的两个节点。</p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> HashMap&lt;Node,Node&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">//克隆以head为头结点的链表返回新链表的头结点</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Node <span class="title">copyRandomList</span><span class="params">(Node head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(head))</span><br><span class="line">            <span class="keyword">return</span> map.get(head);</span><br><span class="line">        Node tmp = <span class="keyword">new</span> Node(head.val);<span class="comment">//复制一份头结点</span></span><br><span class="line">        map.put(head,tmp);<span class="comment">// 【老节点，新节点】</span></span><br><span class="line">        tmp.next = copyRandomList(head.next);</span><br><span class="line">        tmp.random = copyRandomList(head.random);</span><br><span class="line">        <span class="keyword">return</span> tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><a id="more"></a>
+
+
+
+
+
+
+
+<p><img src="/2020/08/12/leetcode/%E5%9B%BE.jpg" alt></p>
+<p>思路：跟链表类似</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Map&lt;Node,Node&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Node <span class="title">cloneGraph</span><span class="params">(Node node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(node == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(node))</span><br><span class="line">            <span class="keyword">return</span> map.get(node);</span><br><span class="line">        Node tmp = <span class="keyword">new</span> Node(node.val,<span class="keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line">        map.put(node,tmp);</span><br><span class="line">        <span class="keyword">for</span>(Node n:node.neighbors)&#123;</span><br><span class="line">            tmp.neighbors.add(cloneGraph(n));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>深拷贝</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>leetcode环形链表</title>
     <url>/2020/08/11/leetcode%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/</url>
     <content><![CDATA[<p><img src="/imgs/leetcode/1.png" alt></p><p>思路1：利用哈希表存储访问过的节点，如若访问到哈希表已有的节点说明有环，如若指针指向空，循环结束，说明无环。空间复杂度为O(n).</p><a id="more"></a>
@@ -780,6 +822,19 @@
       </tags>
   </entry>
   <entry>
+    <title>我的第一篇博客文章</title>
+    <url>/2019/11/14/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[<p>这个是Eoogle的第一篇博客</p><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"hello world!"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>categories测试</category>
+        <category>categories test</category>
+      </categories>
+      <tags>
+        <tag>tags</tag>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>记录hexo安装和使用的步骤</title>
     <url>/2019/11/14/%E8%AE%B0%E5%BD%95hexo%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%AD%A5%E9%AA%A4/</url>
     <content><![CDATA[<p>​        这是正式的第一篇文章，想用来介绍晚上使用hexo框架搭建这个博客的过程。</p><p>​        首先，你的电脑需要有git和nodejs这两个工具，可到各自的官网下载，下载完后在命令行下输入git、node、npm验证</p><a id="more"></a>
@@ -818,19 +873,6 @@
       </categories>
       <tags>
         <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我的第一篇博客文章</title>
-    <url>/2019/11/14/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[<p>这个是Eoogle的第一篇博客</p><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"hello world!"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>categories测试</category>
-        <category>categories test</category>
-      </categories>
-      <tags>
-        <tag>tags</tag>
-        <tag>test</tag>
       </tags>
   </entry>
 </search>
